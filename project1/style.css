@@ -1,0 +1,15 @@
+
+.udacity .navbar{
+    border:0;
+    border-bottom: 4px solid #eee;
+    border-radius: 0;
+}
+
+.udacity .navbar .navbar-brand{
+    height:auto;
+}
+
+.udacity .navbar .navbar-brand > img{
+    width:100px;
+    height:100px;
+}
