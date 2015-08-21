@@ -1,40 +1,84 @@
 <!DOCTYPE html>
 <html  class="udacity">
     <head>
-        <title>Project 1</title>
+        <title>Project 1 : Build a Portfolio Site</title>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Project 1 : Build a Portfolio Site">
+        <meta name="author" content="Joshua Bence">
+        <link rel="icon" href="../assets/favicon.ico">
+        
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900,100italic,300italic,400italic,500italic,900italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/animate.css">
+		<link rel="stylesheet" href="./css/hover.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/udacity.css">
+		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <main >
-            <header class="container">
-                
-                <nav class="navbar">
+        <main class="container container-bordered animated fadeIn">
+            <header>
+                <nav class="navbar navbar-fixed-top-sm">
                     <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">
+                        <div class="pull-left navbar-icon">
+                            <a class="navbar-brand" href="//udacity.com" target="_blank">
                                 <img class="udacity_navbar_logo" src="../assets/images/udacity_logo.svg" alt="Udacity Logo">
                             </a>
                         </div>
-                        <div class="pull-right text-right">
-                            <h1>Jane Doette</h1>
-                            <p>FRONT-END NINJA</p>
+                        <div class="pull-right text-right navbar-title">
+                            <h1 class="text-ellipsed text-caps navbar-name">Jane Doette</h1>
+                            <p class="hide-sm text-caps">Front-End Ninja</p>
                         </div>
                     </div>
                 </nav>
                 
             </header>
-            <section class="container title-image">
-                
+            <section class="title-image">
+                <img class="img-responsive" src="https://placehold.it/380x144" srcset="https://placehold.it/380x144 380w, https://placehold.it/718x359 768w, https://placehold.it/938x469 992w, https://placehold.it/1140x500 1200w" sizes="100vw" alt="title image">
             </section>
-            <section class="container featured">
-                
+            <section class="featured">
+                <header class="section-header">
+                    <h2>Featured Work</h2>
+                </header>
+                <div class="row">
+                  <article class="col-xs-12 col-sm-6 col-md-4">
+                      <a href="https://github.com/udacity/Appify/" target="_blank" class="thumbnail hvr-shadow" role="button">
+                          <img class="img-responsive" src="https://placehold.it/350x200" srcset="https://placehold.it/1050x600 4x, https://placehold.it/700x400 2x, https://placehold.it/350x200 1x" sizes="100vw" alt="Appify">
+                          <div class="caption">
+                              <h3 class="text-caps">Appify</h3>
+                              <p>https://github.com/udacity/Appify/</p>
+                          </div>
+                      </a>
+                  </article>
+                  
+                  <article class="col-xs-12 col-sm-6 col-md-4">
+                      <a href="https://github.com/udacity/Sunflower/" target="_blank" class="thumbnail hvr-shadow" role="button">
+                          <img class="img-responsive" src="https://placehold.it/350x200" srcset="https://placehold.it/1050x600 4x, https://placehold.it/700x400 2x, https://placehold.it/350x200 1x" sizes="100vw" alt="Sunflower">
+                          <div class="caption">
+                              <h3 class="text-caps">Sunflower</h3>
+                              <p>https://github.com/udacity/Sunflower/</p>
+                          </div>
+                      </a>
+                  </article>
+                  
+                  <article class="col-xs-12 col-sm-6 col-md-4">
+                      <a href="https://github.com/udacity/Boken/" target="_blank" class="thumbnail hvr-shadow" role="button">
+                          <img class="img-responsive" src="https://placehold.it/350x200" srcset="https://placehold.it/1050x600 4x, https://placehold.it/700x400 2x, https://placehold.it/350x200 1x" sizes="100vw" alt="Bokeh">
+                          <div class="caption">
+                              <h3 class="text-caps">Bokeh</h3>
+                              <p>https://github.com/udacity/Bokeh/</p>
+                          </div>
+                      </a>
+                  </article>
+                </div>
             </section>
+            <footer>
+                <a href="https://github.com/jdbence/FE-Nanodegree/tree/master/project1" target="_blank">Project 1 : Build a Portfolio Site, Joshua&nbsp;Bence</a>
+            </footer>
         </main>
     </body>
 </html>

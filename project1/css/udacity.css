@@ -1,0 +1,90 @@
+.udacity html, .udacity body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.udacity body{
+    background-color: #F9F9F9;
+    color: #666756;
+    font-family: 'Roboto', sans-serif;
+}
+
+.udacity main{
+    background-color: white;
+}
+
+.udacity footer{
+    text-align: center;
+    margin: 20px;
+}
+
+.udacity .navbar{
+    border: 0;
+    border-bottom: 4px solid #eee;
+    border-radius: 0;
+}
+
+.udacity .navbar .navbar-brand{
+    height: auto;
+}
+
+.udacity .navbar .navbar-brand > img{
+    width: 50px;
+    height: 50px;
+}
+
+.udacity .thumbnail{
+    border-color: transparent;
+    border-radius: 0;
+}
+
+.udacity .thumbnail .caption{
+    color: #666756;
+}
+
+.udacity .thumbnail:hover{
+    border-color: #eee;
+}
+
+.udacity a:focus, .udacity a:hover {
+    text-decoration: none;
+}
+
+.udacity .section-header{
+    color: #BBBBBB;
+}
+
+.udacity .navbar-fixed-top-sm{
+    background-color: white;
+}
+
+.udacity h1{
+    font-size: 3.7em;
+    font-weight: 100;
+}
+
+.udacity .navbar-icon{
+    width: 20%;
+}
+
+.udacity .navbar-title{
+    width: 80%;
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .udacity main{
+      padding-top: 100px;
+    }
+    .udacity .navbar-name{
+        font-size: 3em;
+        line-height: 1;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    
+    .udacity .navbar .navbar-brand > img{
+        width: 100px;
+        height: 100px;
+    }
+}
