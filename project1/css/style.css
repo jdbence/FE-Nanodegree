@@ -1,13 +1,14 @@
-html,body{
+html,
+body {
     height: 100%;
 }
 
-main{
+main {
     min-height: 100%;
     height: auto;
 }
 
-.hvr-shadow{
+.hvr-shadow {
     display: block;
 }
 
@@ -22,11 +23,9 @@ main{
 }
 
 @media only screen and (max-width: 767px) {
-    
-    .hide-sm{
+    .hide-sm {
         display: none;
     }
-    
     .navbar-fixed-top-sm {
         top: 0;
         border-width: 0 0 1px;
@@ -40,8 +39,7 @@ main{
 }
 
 @media only screen and (min-width: 768px) {
-    
-    .container-bordered{
+    .container-bordered {
         border-left: 1px solid #eee;
         border-right: 1px solid #eee;
     }

@@ -8,20 +8,19 @@ Copyright (c) 2015 Daniel Eden
 */
 
 .animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .fadeIn {
-  animation-name: fadeIn;
+    animation-name: fadeIn;
 }
