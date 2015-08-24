@@ -1,12 +1,12 @@
 .udacity html,
 .udacity body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .udacity body {
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
     color: #666756;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .udacity main {
@@ -59,7 +59,7 @@
     background-color: white;
 }
 
-.udacity h1 {
+.udacity .navbar-name {
     font-size: 3.7em;
     font-weight: 100;
 }
@@ -79,6 +79,13 @@
     .udacity .navbar-name {
         font-size: 3em;
         line-height: 1;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .udacity .navbar-name {
+        font-size: 2em;
+        line-height: 1.5;
     }
 }
 
