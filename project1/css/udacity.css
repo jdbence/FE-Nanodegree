@@ -1,19 +1,19 @@
-.udacity html,
-.udacity body {
+html,
+body {
     font-family: "Roboto", sans-serif;
 }
 
-.udacity body {
+body {
     background-color: #f9f9f9;
     color: #666756;
     font-family: "Roboto", sans-serif;
 }
 
-.udacity main {
+main {
     background-color: white;
 }
 
-.udacity footer {
+footer {
     text-align: center;
     margin: 20px;
 }
@@ -46,11 +46,6 @@
     border-color: #eee;
 }
 
-.udacity a:focus,
-.udacity a:hover {
-    text-decoration: none;
-}
-
 .udacity .section-header {
     color: #bbbbbb;
 }
@@ -73,7 +68,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-    .udacity main {
+    main {
         padding-top: 84px;
     }
     .udacity .navbar-name {

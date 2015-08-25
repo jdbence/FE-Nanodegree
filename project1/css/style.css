@@ -22,18 +22,21 @@ main {
     white-space: nowrap;
 }
 
+.text-decoration-no:focus,
+.text-decoration-no:hover {
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 767px) {
     .hide-sm {
         display: none;
     }
     .navbar-fixed-top-sm {
-        top: 0;
-        border-width: 0 0 1px;
-    }
-    .navbar-fixed-top-sm {
         position: fixed;
         right: 0;
         left: 0;
+        top: 0;
+        border-width: 0 0 1px;
         z-index: 1030;
     }
 }
