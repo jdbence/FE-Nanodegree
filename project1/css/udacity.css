@@ -18,52 +18,52 @@ footer {
     margin: 20px;
 }
 
-.udacity .navbar {
+.navbar {
     border: 0;
     border-bottom: 4px solid #eee;
     border-radius: 0;
 }
 
-.udacity .navbar .navbar-brand {
+.navbar .navbar-brand {
     height: auto;
 }
 
-.udacity .navbar .navbar-brand > img {
+.navbar .navbar-brand-img {
     width: 50px;
     height: 50px;
 }
 
-.udacity .thumbnail {
+.thumbnail {
     border-color: transparent;
     border-radius: 0;
 }
 
-.udacity .thumbnail .caption {
+.thumbnail .caption {
     color: #666756;
 }
 
-.udacity .thumbnail:hover {
+a.thumbnail:hover {
     border-color: #eee;
 }
 
-.udacity .section-header {
+.section-header {
     color: #bbbbbb;
 }
 
-.udacity .navbar-fixed-top-sm {
+.navbar-fixed-top-sm {
     background-color: white;
 }
 
-.udacity .navbar-name {
+.navbar-name {
     font-size: 3.7em;
     font-weight: 100;
 }
 
-.udacity .navbar-icon {
+.navbar-icon {
     width: 20%;
 }
 
-.udacity .navbar-title {
+.navbar-title {
     width: 80%;
 }
 
@@ -71,21 +71,21 @@ footer {
     main {
         padding-top: 84px;
     }
-    .udacity .navbar-name {
+    .navbar-name {
         font-size: 3em;
         line-height: 1;
     }
 }
 
 @media only screen and (max-width: 480px) {
-    .udacity .navbar-name {
+    .navbar-name {
         font-size: 2em;
         line-height: 1.5;
     }
 }
 
 @media only screen and (min-width: 768px) {
-    .udacity .navbar .navbar-brand > img {
+    .navbar .navbar-brand-img {
         width: 100px;
         height: 100px;
     }
