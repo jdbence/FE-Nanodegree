@@ -3,20 +3,24 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+
 body {
     background-color: #f9f9f9;
     color: #666756;
     font-family: "Roboto", sans-serif;
 }
 
+
 main {
     background-color: white;
 }
+
 
 footer {
     text-align: center;
     margin: 20px;
 }
+
 
 .navbar {
     border: 0;
@@ -24,58 +28,72 @@ footer {
     border-radius: 0;
 }
 
+
 .navbar .navbar-brand {
     height: auto;
 }
+
 
 .navbar .navbar-brand-img {
     width: 50px;
     height: 50px;
 }
 
+
 .thumbnail {
     border-color: transparent;
     border-radius: 0;
 }
 
+
 .thumbnail .caption {
     color: #666756;
 }
+
 
 a.thumbnail:hover {
     border-color: #eee;
 }
 
+
 .section-header {
     color: #bbbbbb;
 }
 
+
 .navbar-fixed-top-sm {
     background-color: white;
 }
+
 
 .navbar-name {
     font-size: 3.7em;
     font-weight: 100;
 }
 
+
 .navbar-icon {
     width: 20%;
 }
+
 
 .navbar-title {
     width: 80%;
 }
 
+
 @media only screen and (max-width: 767px) {
     main {
         padding-top: 84px;
     }
+    
+    
     .navbar-name {
         font-size: 3em;
         line-height: 1;
     }
 }
+
 
 @media only screen and (max-width: 480px) {
     .navbar-name {
@@ -83,6 +101,7 @@ a.thumbnail:hover {
         line-height: 1.5;
     }
 }
+
 
 @media only screen and (min-width: 768px) {
     .navbar .navbar-brand-img {
