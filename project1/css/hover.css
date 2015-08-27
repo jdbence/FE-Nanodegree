@@ -1,7 +1,6 @@
 /*
     http://ianlunn.github.io/Hover/
 */
-
 .hvr-shadow {
     display: inline-block;
     vertical-align: middle;
@@ -16,6 +15,7 @@
     -webkit-transition-property: box-shadow;
     transition-property: box-shadow;
 }
+
 
 .hvr-shadow:hover,
 .hvr-shadow:focus,
