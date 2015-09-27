@@ -1,0 +1,52 @@
+html,
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+
+.img-circle {
+    border-radius: 50%;
+}
+
+
+.display-inline{
+    display: inline;
+}
+
+#header {
+    background-color: #4285f4;
+}
+
+a{
+  color: #03a9f4;
+}
+
+/*h1{*/
+/*  color: white;*/
+/*}*/
+
+h2{
+  color: #757575;
+}
+
+.white-text{
+  color: white;
+}
+
+.white7-text{
+  color: rgba(255,255,255,.7);
+}
+
+.dark-grey{
+  background: #424242;
+}
+
+#footerContacts{
+  background: #616161;
+}
+
+@media only screen and (min-width: 750px) {
+  #skills.flex-box {
+    flex-direction: column;
+  }
+}
