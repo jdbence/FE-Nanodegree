@@ -32,6 +32,7 @@
 
   <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
+  <script src="js/scrollTo.js"></script>
 
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
@@ -39,7 +40,15 @@
   
 </head>
 <body>
-  <div id="main">
+  <section id="menu">
+    <div class="flex-box flex-menu">
+      <a href="#workExperience" class="menu-button scrollTo">Work Experience</a>
+      <a href="#projects" class="menu-button scrollTo">Projects</a>
+      <a href="#education" class="menu-button scrollTo">Education</a>
+      <a href="#header" class="menu-button scrollTo">Contact</a>
+    </div> 
+  </section>
+  <section id="main">
     <div id="header" class="center-content clear-fix">
       <ul id="topContacts" class="flex-box"></ul>
     </div>
@@ -60,7 +69,7 @@
       <h2 class="white-text center-text">Let's Connect</h2>
       <ul id="footerContacts" class="flex-box"></ul>
     </div>
-  </div>
+  </section>
 
   <!--
   The next line tells the browser where to download the JavaScript file you'll be

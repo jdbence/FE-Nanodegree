@@ -3,6 +3,9 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+body{
+  padding-top: 60px;
+}
 
 .img-circle {
     border-radius: 50%;
@@ -20,10 +23,6 @@ body {
 a{
   color: #03a9f4;
 }
-
-/*h1{*/
-/*  color: white;*/
-/*}*/
 
 h2{
   color: #757575;
@@ -43,6 +42,24 @@ h2{
 
 #footerContacts{
   background: #616161;
+}
+
+.flex-menu{
+  position: fixed;
+  width: 100%;
+  background: white;
+  padding: 0;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-button{
+  margin: 0;
+  padding: 20px;
+}
+
+.menu-button:hover{
+  background-color: #f3f3f3;
 }
 
 @media only screen and (min-width: 750px) {
