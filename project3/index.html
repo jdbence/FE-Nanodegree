@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Project 3 : Frogger</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Project 2 : Resume">
+    <meta name="author" content="Joshua Bence">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <section class="scene char_select hidden">
+        <h2>Choose Your Character</h2>
+        <div class="container-char">
+            <img src="images/char-boy.png" class="char selected-char" alt="boy">
+            <img src="images/char-cat-girl.png" class="char" alt="cat">
+            <img src="images/char-horn-girl.png" class="char" alt="horn">
+            <img src="images/char-pink-girl.png" class="char" alt="pink">
+            <img src="images/char-princess-girl.png" class="char" alt="princess">
+        </div>
+        <button class="btn btn-play">Play</button>
+    </section>
+    
+    <section class="scene level hidden"></section>
+    
+    <section class="scene gameover hidden">
+        <div class="cover"></div>
+        <div class="popup">
+            <div class="popup-inner">
+                <h2 class="gameover-title">Times Up!</h2>
+                <button class="btn btn-menu">Menu</button>
+                <button class="btn btn-play btn-replay">Retry</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="scene gamewin hidden">
+        <div class="cover"></div>
+        <div class="popup">
+            <div class="popup-inner">
+                <h2 class="gameover-title">You Win!</h2>
+                <button class="btn btn-menu">Menu</button>
+            </div>
+        </div>
+    </section>
+    
+    <script src="js/html.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/collision.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/level.js"></script>
+    <script src="js/sensor.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/key.js"></script>
+    <script src="js/water.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

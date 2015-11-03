@@ -1,0 +1,108 @@
+html, body {
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+.scene{
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    float: left;
+    height: 100vh;
+}
+
+.hidden{
+    display: none;
+}
+
+.container-char{
+    min-height: 171px;
+}
+
+.char{
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.char:not(.selected-char):hover{
+    opacity: 0.7;
+}
+
+.selected-char{
+    background:url(./../images/Selector.png);
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.btn{
+    margin-top: 20px;
+    padding: 10px 19px;
+    font-size: 17px;
+    line-height: 1.471;
+    border-radius: 6px;
+    color: #fff;
+    border: none;
+    vertical-align: middle;
+    cursor: pointer;
+    text-align: center;
+    -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+    transition: border .25s linear,color .25s linear,background-color .25s linear;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.btn:focus{
+   outline: 0;
+}
+
+.btn-play{
+    color: #fff;
+    background-color: #2ecc71;
+    border-color: #4cae4c;
+}
+
+.btn-play:hover{
+    color: #fff;
+    background-color: #58d68d;
+    border-color: #58d68d;
+    outline: 0;
+}
+
+.btn-menu {
+    color: #fff;
+    background-color: #3498db;
+    border-color: #46b8da;
+}
+
+.btn-menu:hover{
+    color: #fff;
+    background-color: #5dade2;
+    border-color: #5dade2;
+}
+
+.popup{
+    border-radius: 10px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #eee;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-inner{
+    margin: 20px;
+    width: 400px;
+    height: 120px;
+}
+
+.cover{
+    position: absolute;
+    opacity: 0.5;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+}
