@@ -14,6 +14,8 @@ var Level = function(){
     this.reset = function(){
         this.level = Model.set("level", 0);
         this.lastLevel = 7;
+        Model.set("level_total_time", 15);
+        Model.set("level_complete", false);
     };
     
     

@@ -25,8 +25,9 @@ var Key = function(row, col){
     */
     Key.prototype.update = function(dt) {
         this.sensor.position(this.x, this.y);
-        if(player && player.isAlive){
+        if(player && player.isAlive && this.isAlive){
             if(Collision.isColliding(this.sensor, player.sensor)){
+                this.isAlive = false;
                 player.hit("key");
             }
         }

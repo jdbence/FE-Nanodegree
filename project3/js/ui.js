@@ -15,7 +15,7 @@ var UI = function(){
     */
     this.start = function(){
         this.keys = Model.get("level");
-        this.levelTime = 15;
+        this.levelTime = Model.get("level_total_time");
         
         this.levelTimer = new Timer(1, this.levelTime);
         this.levelTimer.on("COMPLETE", this.onTimerComplete);
@@ -26,7 +26,9 @@ var UI = function(){
     * @description The level timer has completed
     */
     this.onTimerComplete = function(){
-         Scene.endGame();
+        if(!Model.get("level_complete")){
+            Scene.endGame();
+        }
     };
     
     /**
@@ -61,8 +63,10 @@ var UI = function(){
     * @param {int} dt - Time since last update
     */
     this.update = function(dt) {
-        this.keys = Model.get("level");
-        this.levelTimer.update(dt);
+        if(!Model.get("level_complete")){
+            this.keys = Model.get("level");
+            this.levelTimer.update(dt);
+        }
     };
     
     /**

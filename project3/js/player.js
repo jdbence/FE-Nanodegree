@@ -70,8 +70,8 @@ var Player = function(){
         if(invoker == "water" || invoker == "enemy"){
             this.respawn();
         }else if(invoker == "key"){
-            this.isAlive = false;
-            Scene.nextLevel();
+            //this.isAlive = false;
+            Scene.levelComplete();
         }
     };
     
@@ -99,7 +99,7 @@ var Player = function(){
     */
     this.handleInput = function(e) {
         var input = inputMap[e.keyCode];
-        if(input && this.isAlive == true){
+        if(input && this.isAlive == true && !Model.get("level_complete")){
             var map = inputResponseMap[input];
             
             //-- Movement

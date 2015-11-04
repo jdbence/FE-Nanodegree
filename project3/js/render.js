@@ -17,7 +17,7 @@ var Render = function(owner){
         var x = flipped == 1 ? this.owner.x * flipped : this.owner.x * flipped - 101;
         ctx.save();
         ctx.scale(flipped, 1);
-        ctx.globalAlpha = this.owner.alpha;
+        ctx.globalAlpha = this.owner.alpha || 1;
         ctx.drawImage(Resources.get(this.owner.sprite), x, this.owner.y + this.owner.offsetY, 101, 171);
         ctx.restore();
     };
