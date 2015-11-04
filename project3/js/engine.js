@@ -28,6 +28,7 @@ var Engine = (function(global) {
         
     this.width = canvas.width = 505;
     this.height = canvas.height = 606;
+    canvas.className += " canvas-game";
     doc.getElementsByClassName("level")[0].appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
