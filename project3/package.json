@@ -5,8 +5,16 @@
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
+    "del": "^2.0.2",
+    "eslint-html-reporter": "^0.4.14",
+    "fs": "0.0.2",
     "gulp": "^3.9.0",
-    "gulp-eslint": "^1.0.0"
+    "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.7"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
