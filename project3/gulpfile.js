@@ -40,7 +40,8 @@ gulp.task('lint', function () {
             fs.writeFileSync(path.join(__dirname, './build/lint.html'), results);
         }))
         //.pipe(eslint.format('junit', process.stdout))
-        .pipe(eslint.failAfterError());
+        .pipe(eslint.failAfterError())
+        .pipe(gulp.dest('../output'));
 });
 
 gulp.task('style', function () {

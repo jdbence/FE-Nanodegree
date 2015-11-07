@@ -1,8 +1,4 @@
 'use strict';
-var Scene = Scene || {};
-var El = El || {};
-var UI = UI || {};
-var Player = Player || {};
 var player = new Player();
 var ui = new UI();
 var scene = '';
