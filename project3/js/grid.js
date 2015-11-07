@@ -4,9 +4,7 @@
 * @constructor
 */
 var Grid = (function Grid() {
-
-	var instance = function() {
-    };
+	var instance = function instance() {};
 
 	instance.cellWidth = 101;
 	instance.cellHeight = 83;
@@ -30,10 +28,9 @@ var Grid = (function Grid() {
 	 * @returns {number} The screen y position
 	 */
 	instance.getYFromRow = function getYFromRow(row) {
-		var row = Math.max(0, Math.min(row, instance.rows - 1));
+		row = Math.max(0, Math.min(row, instance.rows - 1));
 		return instance.offsetY + row * instance.cellHeight;
 	};
 
 	return instance;
-
 })();

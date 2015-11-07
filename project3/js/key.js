@@ -17,7 +17,6 @@ var Key = function Key(row, col) {
 };
 
 (function Prototype() {
-
 	/**
 	 * @description Checks if this entity is colliding with the player
 	 * @param {int} dt - Time since last update
@@ -40,5 +39,4 @@ var Key = function Key(row, col) {
 		this.renderer.render(ctx);
 		this.sensor.render(ctx);
 	};
-
 }).call(Key.prototype);

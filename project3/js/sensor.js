@@ -16,7 +16,7 @@ var Sensor = function Sensor(x, y, width, height, offsetX, offsetY) {
 	this.height = height;
 	this.offsetX = offsetX;
 	this.offsetY = offsetY;
-	this.debug = true;
+	this.debug = false;
 };
 
 (function Prototype() {

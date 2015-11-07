@@ -4,10 +4,8 @@
 * @constructor
 */
 var Model = (function Model() {
-
 	var data = {};
-	var instance = function() {
-    };
+	var instance = function instance() {};
 
 	/**
 	 * @description Sets a value to a key
@@ -29,5 +27,4 @@ var Model = (function Model() {
 	};
 
 	return instance;
-
 })();

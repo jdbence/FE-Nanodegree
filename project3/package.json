@@ -6,7 +6,6 @@
   "dependencies": {},
   "devDependencies": {
     "del": "^2.0.2",
-    "eslint-html-reporter": "^0.4.14",
     "fs": "0.0.2",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",

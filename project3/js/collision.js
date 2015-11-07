@@ -4,7 +4,7 @@
  * @constructor
  */
 var Collision = (function Prototype() {
-	var instance = function() {};
+	var instance = function instance() {};
 	/**
 	 * @description Uses box collision to check if two sensors are touching
 	 * @param {Senor} sensorA - Bounding rect A

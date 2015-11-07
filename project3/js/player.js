@@ -24,7 +24,7 @@ var Player = function Player() {
 	};
 
 	var onBlinkTimerUpdate = function onBlinkTimerUpdate() {
-		ref.alpha = (ref.alpha == 0.4 ? 1 : 0.4);
+		ref.alpha = (ref.alpha === 0.4 ? 1 : 0.4);
 	};
 
 	var onKeyUp = function onKeyUp(e) {
@@ -39,7 +39,6 @@ var Player = function Player() {
 };
 
 (function Prototype() {
-
 	var inputMap = {
 		37: 'left',
 		38: 'up',
@@ -48,10 +47,10 @@ var Player = function Player() {
 	};
 
 	var inputResponseMap = {
-		'left': {'axis': 'x', 'dir': -1},
-		'up': {'axis': 'y', 'dir': -1},
-		'right': {'axis': 'x', 'dir': 1},
-		'down': {'axis': 'y', 'dir': 1}
+		left: {axis: 'x', dir: -1},
+		up: {axis: 'y', dir: -1},
+		right: {axis: 'x', dir: 1},
+		down: {axis: 'y', dir: 1}
 	};
 
 	/**
@@ -70,10 +69,9 @@ var Player = function Player() {
 	 * @param {string} invoker - Type of object that hit the player
 	 */
 	this.hit = function hit(invoker) {
-		if (invoker == 'water' || invoker == 'enemy') {
+		if (invoker === 'water' || invoker === 'enemy') {
 			this.respawn();
-		}else if (invoker == 'key') {
-			//this.isAlive = false;
+		}else if (invoker === 'key') {
 			Scene.levelComplete();
 		}
 	};
@@ -87,7 +85,7 @@ var Player = function Player() {
 	this.getMovement = function getMovement(axis, dir) {
 		var v;
 
-		if (axis == 'x') {
+		if (axis === 'x') {
 			v = Math.floor(this.x / Grid.cellWidth) + dir;
 			return Grid.getXFromColumn(v);
 		}
@@ -102,10 +100,10 @@ var Player = function Player() {
 	 */
 	this.handleInput = function handleInput(e) {
 		var input = inputMap[e.keyCode];
-		if (input && this.isAlive == true && !Model.get('level_complete')) {
+		if (input && this.isAlive === true && !Model.get('level_complete')) {
 			var map = inputResponseMap[input];
 
-			//-- Movement
+			//  Movement
 			if (map.hasOwnProperty('axis')) {
 				this[map.axis] = this.getMovement(map.axis, map.dir);
 			}
@@ -131,5 +129,4 @@ var Player = function Player() {
 		this.renderer.render(ctx);
 		this.sensor.render(ctx);
 	};
-
 }).call(Player.prototype);

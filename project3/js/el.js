@@ -4,8 +4,7 @@
  * @constructor
  */
 var El = (function El() {
-
-	var instance = function() {};
+	var instance = function instance() {};
 
 	/**
 	 * @description Removes the className from each element in the array
@@ -55,7 +54,7 @@ var El = (function El() {
 		var i;
 
 		if (elements) {
-			if (elements.length == undefined) {
+			if (elements.length === undefined) {
 				elements = [elements];
 			}
 			for (i = 0; i < elements.length; i++) {
@@ -86,7 +85,7 @@ var El = (function El() {
 	 */
 	instance.getElements = function getElements(identifier) {
 		if (this.isString(identifier)) {
-			if (identifier.indexOf('#') != -1) {
+			if (identifier.indexOf('#') !== -1) {
 				return document.getElementById(identifier);
 			}
 			return document.getElementsByClassName(identifier);
@@ -119,5 +118,4 @@ var El = (function El() {
 	};
 
 	return instance;
-
 })();

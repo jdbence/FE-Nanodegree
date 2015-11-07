@@ -20,16 +20,14 @@ var Enemy = function Enemy(row, col, speed) {
 };
 
 (function Prototype() {
-
 	/**
 	 * @description Checks if this entity is colliding with the player and keeps target on screen by wrapping x location
 	 * @param {int} dt - Time since last update
 	 */
 	this.update = function update(dt) {
-
 		this.x += dt * this.speed;
 
-		//-- Wrap
+		//  Wrap
 		if (this.x > (Grid.columns * Grid.cellWidth) + Grid.cellWidth) {
 			this.x = Grid.getXFromColumn(0) - Grid.cellWidth;
 		} else if (this.x < -Grid.cellWidth) {
@@ -52,5 +50,4 @@ var Enemy = function Enemy(row, col, speed) {
 		this.renderer.render(ctx);
 		this.sensor.render(ctx);
 	};
-
 }).call(Enemy.prototype);

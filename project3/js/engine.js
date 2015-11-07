@@ -99,7 +99,7 @@ var Engine = (function Engine(global) {
 	   * render methods.
 	   */
 	function updateEntities(dt) {
-		instance.entities.forEach(function(enemy) {
+		instance.entities.forEach(function EachEnemy(enemy) {
 			enemy.update(dt);
 		});
 		player.update(dt);

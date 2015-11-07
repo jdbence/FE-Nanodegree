@@ -6,14 +6,13 @@
 var Scene = (function Scene() {
 	var instance = function instance() {};
 	var level = new Level();
-	var onCharacterClicked = function onCharacterClicked(el){
+	var onCharacterClicked = function onCharacterClicked(el) {
 		var s = el.target.src;
 		player.sprite = s.slice(s.indexOf('/images/') + 1, s.length);
 
 		El.removeClass(El.getElements('selected-char'), 'selected-char');
 		El.addClass(el.target, 'selected-char');
 	};
-	
 	/**
 	 * @description Shows the Character selection scene
 	 */
@@ -82,11 +81,7 @@ var Scene = (function Scene() {
 	instance.levelComplete = function levelComplete() {
 		Model.set('level_complete', true);
 		Engine.entities.push(new Explosion(0, 2));
-
-		var ref = this;
-		setTimeout(function() {
-			ref.nextLevel();
-		}, 1500);
+		setTimeout(instance.nextLevel, 1500);
 	};
 
 	/**
@@ -96,9 +91,9 @@ var Scene = (function Scene() {
 		level.next();
 
 		if (level.level > level.lastLevel) {
-			this.winGame();
+			instance.winGame();
 		} else {
-			this.startGame();
+			instance.startGame();
 		}
 	};
 

@@ -8,7 +8,6 @@ var Level = function Level() {
 };
 
 (function Prototype() {
-
 	/**
 	 * @description Reset's level variables to original values
 	 */
@@ -32,14 +31,13 @@ var Level = function Level() {
 	this.addEntities = function addEntities() {
 		var data = this.levelData();
 		var i;
-		
 		Engine.entities = [];
 
 		for (i = 0; i < data.length; i++) {
 			if (data[i].hasOwnProperty('t')) {
-				if (data[i].t == 'key') {
+				if (data[i].t === 'key') {
 					Engine.entities.push(new Key(data[i].r, data[i].c));
-				}else if (data[i].t == 'water') {
+				}else if (data[i].t === 'water') {
 					Engine.entities.push(new Water(data[i].r, data[i].c));
 				}
 			}else {
@@ -53,53 +51,52 @@ var Level = function Level() {
 	 * @returns {array}
 	 */
 	this.levelData = function levelData() {
-
-		//Formatted so it's easier to see the levels (not following Udacity JS standards)
-		//jscs:disable
-		if (this.level == 0) {
+		//  Formatted so it's easier to see the levels (not following Udacity JS standards)
+		//  jscs:disable
+		if (this.level === 0) {
 			return [
-			{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+			{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 			];
-		}else if (this.level == 1) {
+		}else if (this.level === 1) {
 			return [
-			{'r': 3,'c': 0,'s': 200},{'r': 3,'c': 2,'s': 200},{'r': 3,'c': 4,'s': 200},
-			{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+			{r: 3, c: 0, s: 200}, {r: 3, c: 2, s: 200}, {r: 3, c: 4, s: 200},
+			{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 			];
-		}else if (this.level == 2) {
+		}else if (this.level === 2) {
 			return [
-			{'r': 1,'c': 0,'s': -100},{'r': 1,'c': 1,'s': -100},{'r': 1,'c': 3,'s': -100},{'r': 1,'c': 4,'s': -100},
-			{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+			{r: 1, c: 0, s: -100}, {r: 1, c: 1, s: -100}, {r: 1, c: 3, s: -100}, {r: 1, c: 4, s: -100},
+			{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 			];
-		}else if (this.level == 3) {
+		}else if (this.level === 3) {
 			return [
-			{'r': 2,'c': 0,'s': 500},{'r': 2,'c': 4,'s': 600},
-			{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+			{r: 2, c: 0, s: 500}, {r: 2, c: 4, s: 600},
+			{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 			];
-		}else if (this.level == 4) {
+		}else if (this.level === 4) {
 			return [
-			{'r': 1,'c': 0,'s': -100},{'r': 1,'c': 1,'s': -100},{'r': 1,'c': 3,'s': -100},{'r': 1,'c': 4,'s': -100},
-			{'r': 3,'c': 0,'s': 200},{'r': 3,'c': 2,'s': 200},{'r': 3,'c': 4,'s': 200},
-			{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+			{r: 1, c: 0, s: -100}, {r: 1, c: 1, s: -100}, {r: 1, c: 3, s: -100}, {r: 1, c: 4, s: -100},
+			{r: 3, c: 0, s: 200}, {r: 3, c: 2, s: 200}, {r: 3, c: 4, s: 200},
+			{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 			];
-		}else if (this.level == 5) {
+		}else if (this.level === 5) {
 			return [
-			{'r': 2,'c': 0,'s': 500},{'r': 2,'c': 4,'s': 600},
-			{'r': 3,'c': 0,'s': 200},{'r': 3,'c': 2,'s': 200},{'r': 3,'c': 4,'s': 200},
-			{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+			{r: 2, c: 0, s: 500}, {r: 2, c: 4, s: 600},
+			{r: 3, c: 0, s: 200}, {r: 3, c: 2, s: 200}, {r: 3, c: 4, s: 200},
+			{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 			];
-		}else if (this.level == 6) {
+		}else if (this.level === 6) {
 			return [
-			{'r': 1,'c': 0,'s': -100},{'r': 1,'c': 1,'s': -100},{'r': 1,'c': 3,'s': -100},{'r': 1,'c': 4,'s': -100},
-			{'r': 2,'c': 0,'s': 500},{'r': 2,'c': 4,'s': 600},
-			{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+			{r: 1, c: 0, s: -100}, {r: 1, c: 1, s: -100}, {r: 1, c: 3, s: -100}, {r: 1, c: 4, s: -100},
+			{r: 2, c: 0, s: 500}, {r: 2, c: 4, s: 600},
+			{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 			];
 		}
-		//jscs:disable
+		//  jscs:disable
 		return [
-		{'r': 1,'c': 0,'s': -100},{'r': 1,'c': 1,'s': -100},{'r': 1,'c': 3,'s': -100},{'r': 1,'c': 4,'s': -100},
-		{'r': 2,'c': 0,'s': 500},{'r': 2,'c': 4,'s': 600},
-		{'r': 3,'c': 0,'s': 200},{'r': 3,'c': 2,'s': 200},{'r': 3,'c': 4,'s': 200},
-		{'r': 0,'c': 0,'t': 'water'},{'r': 0,'c': 1,'t': 'water'},{'r': 0,'c': 2,'t': 'key'},{'r': 0,'c': 3,'t': 'water'},{'r': 0,'c': 4,'t': 'water'}
+		{r: 1, c: 0, s: -100}, {r: 1, c: 1, s: -100}, {r: 1, c: 3, s: -100}, {r: 1, c: 4, s: -100},
+		{r: 2, c: 0, s: 500}, {r: 2, c: 4, s: 600},
+		{r: 3, c: 0, s: 200}, {r: 3, c: 2, s: 200}, {r: 3, c: 4, s: 200},
+		{r: 0, c: 0, t: 'water'}, {r: 0, c: 1, t: 'water'}, {r: 0, c: 2, t: 'key'}, {r: 0, c: 3, t: 'water'}, {r: 0, c: 4, t: 'water'}
 		];
 	};
 }).call(Level.prototype);
