@@ -40,8 +40,7 @@ gulp.task('lint', function () {
             fs.writeFileSync(path.join(__dirname, './build/lint.html'), results);
         }))
         //.pipe(eslint.format('junit', process.stdout))
-        .pipe(eslint.failAfterError())
-        .pipe(gulp.dest('../output'));
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task('style', function () {
@@ -52,19 +51,19 @@ gulp.task('style', function () {
         //.pipe(gulp.dest('js'));
 });
 
-gulp.task('build', ['clean'], function() {
+gulp.task('js', ['clean'], function() {
     return gulp.src(includeJS)
-      .pipe(sourcemaps.init())
-      .pipe(concat('app.min.js'))
-      //.pipe(uglify())
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('./build'));
+        .pipe(sourcemaps.init())
+        .pipe(concat('app.min.js'))
+        //.pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('./build'));
 });
 
 gulp.task("clean", function () {
     return del(['./build']);
 });
 
-gulp.task('default', ['lint', 'style'], function () {
-    console.log('LINT COMPLETE');
-});
+gulp.task('build', ['js']);
+
+gulp.task('default', ['build']);
