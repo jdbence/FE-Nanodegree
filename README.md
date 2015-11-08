@@ -2,7 +2,7 @@
 
 ## Project 0 : About Me
 
-## Project 1 : Build a Portfolio Sit
+## Project 1 : Build a Portfolio Site
 
 ## Project 2 : Resume
 
