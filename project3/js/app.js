@@ -1,5 +1,6 @@
 'use strict';
-var player = new Player();
+//  var player = new Player();
+var player = Blueprint.create('player', {r: 5, c: 2});
 var ui = new UI();
 var scene = '';
 var App = (function App() {

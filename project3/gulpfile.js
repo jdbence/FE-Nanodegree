@@ -22,6 +22,9 @@ var includeJS = [
     'js/scene.js',
     'js/sensor.js',
     'js/render.js',
+    'js/keyboardInput.js',
+    'js/movement.js',
+    'js/blueprint.js',
     'js/ui.js',
     'js/key.js',
     'js/water.js',
@@ -55,10 +58,10 @@ gulp.task('js', ['clean'], function() {
     return gulp.src(includeJS)
         .pipe(sourcemaps.init())
         .pipe(concat('app.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./build'))
         .pipe(concat('app.min.js'))
         .pipe(uglify())
-        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./build'));
 });
 

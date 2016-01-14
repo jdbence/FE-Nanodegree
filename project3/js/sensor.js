@@ -17,6 +17,7 @@ var Sensor = function Sensor(x, y, width, height, offsetX, offsetY) {
 	this.offsetX = offsetX;
 	this.offsetY = offsetY;
 	this.debug = false;
+	this.owner = null;
 };
 
 (function Prototype() {
@@ -30,6 +31,22 @@ var Sensor = function Sensor(x, y, width, height, offsetX, offsetY) {
 			ctx.strokeStyle = 'red';
 			ctx.rect(this.x, this.y, this.width, this.height);
 			ctx.stroke();
+		}
+	};
+	
+	/**
+	 * @description Updates the sensor position
+	 * @param {number} dt - Time since last update
+	 */
+	this.update = function update(dt) {
+		if(this.owner) {
+			this.position(this.owner.x, this.owner.y);
+			var target = this.owner.target;
+			if (target && target.isAlive && !Model.get('level_complete')) {
+				if (Collision.isColliding(this, target.sensor)) {
+					target.hit(this.owner.type);
+				}
+			}
 		}
 	};
 

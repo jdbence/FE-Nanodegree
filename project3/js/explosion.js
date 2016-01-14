@@ -19,8 +19,10 @@ var Explosion = function Explosion(row, col) {
 	 */
 	this.addStars = function addStars(row, col, total) {
 		var i;
+		var data = {r: row, c: col};
 		for (i = 0; i < total; i++) {
-			this.stars.push(new Star(row, col));
+			//this.stars.push(new Star(row, col));
+			this.stars.push(Blueprint.create("star", data));
 		}
 	};
 

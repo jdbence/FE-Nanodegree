@@ -6,6 +6,7 @@
 var Scene = (function Scene() {
 	var instance = function instance() {};
 	var level = new Level();
+	var timeout;
 	var onCharacterClicked = function onCharacterClicked(el) {
 		var s = el.target.src;
 		player.sprite = s.slice(s.indexOf('/images/') + 1, s.length);
@@ -17,7 +18,7 @@ var Scene = (function Scene() {
 	 * @description Shows the Character selection scene
 	 */
 	instance.startMenu = function startMenu() {
-		var characters = document.getElementsByClassName('char');
+		var characters = El.getElements('char');
 		var i;
 
 		for (i = 0; i < characters.length; i++) {
@@ -39,6 +40,8 @@ var Scene = (function Scene() {
 	instance.startGame = function startGame(reset) {
 		reset = reset || false;
 
+		player.respawn(false);
+		
 		if (reset) {
 			level.reset();
 		} else {
@@ -46,7 +49,7 @@ var Scene = (function Scene() {
 		}
 
 		Engine.preload();
-		player.respawn();
+		
 
 		level.addEntities();
 		Engine.entities.push(ui);
@@ -81,7 +84,8 @@ var Scene = (function Scene() {
 	instance.levelComplete = function levelComplete() {
 		Model.set('level_complete', true);
 		Engine.entities.push(new Explosion(0, 2));
-		setTimeout(instance.nextLevel, 1500);
+		clearTimeout(timeout);
+		timeout = setTimeout(instance.nextLevel, 1500);
 	};
 
 	/**

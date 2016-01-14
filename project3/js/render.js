@@ -3,8 +3,7 @@
 * @description A component that renders the owners sprite according to position, alpha and direction
 * @constructor
 */
-var Render = function Render(owner) {
-	this.owner = owner;
+var Render = function Render() {
 };
 
 (function Prototype() {
@@ -21,6 +20,13 @@ var Render = function Render(owner) {
 		ctx.globalAlpha = this.owner.alpha || 1;
 		ctx.drawImage(Resources.get(this.owner.sprite), pos.x, pos.y, 101, 171);
 		ctx.restore();
+	};
+	
+	/**
+	 * @description Update
+	 * @param {number} dt - Time since last update
+	 */
+	this.update = function update(dt) {
 	};
 
 	/**

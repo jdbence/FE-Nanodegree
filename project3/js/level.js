@@ -35,13 +35,9 @@ var Level = function Level() {
 
 		for (i = 0; i < data.length; i++) {
 			if (data[i].hasOwnProperty('t')) {
-				if (data[i].t === 'key') {
-					Engine.entities.push(new Key(data[i].r, data[i].c));
-				}else if (data[i].t === 'water') {
-					Engine.entities.push(new Water(data[i].r, data[i].c));
-				}
+				Blueprint.create(data[i].t, data[i]);
 			}else {
-				Engine.entities.push(new Enemy(data[i].r, data[i].c, data[i].s));
+				Blueprint.create("enemy", data[i]);
 			}
 		}
 	};
