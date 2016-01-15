@@ -243,11 +243,13 @@ String.prototype.capitalize = function() {
 
 // Pulls adjective out of array using random number sent from generator
 function getAdj(x){
+  // now uses direct lookup
   return adjective[x] || adjective.scifi_default;
 }
 
 // Pulls noun out of array using random number sent from generator
 function getNoun(y) {
+  // now uses direct lookup
   return noun[y] || noun.scifi_default;
 }
 
@@ -435,6 +437,7 @@ window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
 var pizzasDiv = document.getElementById("randomPizzas");
+// Uses frag to append to DOM only once
 var frag = document.createDocumentFragment();
 for (var i = 2; i < 100; i++) {
   frag.appendChild(pizzaElementGenerator(i));
@@ -492,6 +495,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  // Uses frag to append to DOM only once
   var frag = document.createDocumentFragment();
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
