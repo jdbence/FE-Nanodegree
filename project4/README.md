@@ -18,7 +18,7 @@ Uses Gulp for combining and minifying html, css, js and images
 ### Gulp Dependencies
 
 ```node
-//  Move into project3 folder
+//  Move into project folder
 cd project4/
 //  Install globals
 npm install gulp -g
