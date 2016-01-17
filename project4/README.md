@@ -40,7 +40,7 @@ gulp clean
 ## Simple Server
 
 ```node
-//  Move into project4 folder
+//  Move into project folder
 cd project4/
 //  Install globals
 npm install http-server -g
