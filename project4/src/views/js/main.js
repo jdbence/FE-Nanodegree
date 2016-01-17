@@ -345,10 +345,11 @@ var pizzaElementGenerator = function(i) {
   pizzaImageContainer.classList.add("col-md-6");
 
   pizzaImage.src = "images/pizza.png";
+  pizzaImage.width = "232px"
+  pizzaImage.height = "300px";
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
-
 
   pizzaDescriptionContainer.classList.add("col-md-6");
 
@@ -387,40 +388,17 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-  function determineDx (elem, size) {
-    var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
-    var oldSize = oldWidth / windowWidth;
-
-    // TODO: change to 3 sizes? no more xl?
-    // Changes the slider value to a percent width
-    function sizeSwitcher (size) {
-      switch(size) {
-        case "1":
-          return 0.25;
-        case "2":
-          return 0.3333;
-        case "3":
-          return 0.5;
-        default:
-          console.log("bug in sizeSwitcher");
-      }
-    }
-
-    var newSize = sizeSwitcher(size);
-    var dx = (newSize - oldSize) * windowWidth;
-
-    return dx;
-  }
-
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
     var pizzaContainerElements = document.querySelectorAll(".randomPizzaContainer");
+    var pizzaContainer;
+    var newwidth = windowWidth * (size === "1" ? 0.25 : size === "2" ? 0.3333 : 0.5);
+    // Sets pizza to percentage of window width
     for (var i = 0; i < pizzaContainerElements.length; i++) {
-      var dx = determineDx(pizzaContainerElements[i], size);
-      var newwidth = (pizzaContainerElements[i].offsetWidth + dx) + 'px';
-      pizzaContainerElements[i].style.width = newwidth;
+      pizzaContainer = pizzaContainerElements[i]; 
+      pizzaContainer.style.width = newwidth + "px";
+      pizzaContainer.style.height = "325px";
     }
   }
 
