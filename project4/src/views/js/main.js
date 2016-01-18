@@ -473,7 +473,7 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-document.addEventListener('DOMContentLoaded', function() {
+function createScrollPizzas() {
   var cols = 8;
   var s = 256;
   var elem;
@@ -492,4 +492,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   (document.getElementsByClassName("movingPizzas1")[0]).appendChild(frag);
   updatePositions();
-});
+}
+
+// Check if DOM ready fired before JS load completed
+if (document.readyState === "complete" || document.readyState === "loaded" || document.readyState === "interactive") {
+  createScrollPizzas();
+}else{
+  document.addEventListener('DOMContentLoaded', createScrollPizzas);
+}
