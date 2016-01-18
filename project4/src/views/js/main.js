@@ -400,7 +400,6 @@ var resizePizzas = function(size) {
     for (var i = 0; i < totalPizzas; i++) {
       pizzaContainer = pizzaContainerElements[i]; 
       pizzaContainer.style.width = newwidth + "px";
-      pizzaContainer.style.height = "325px";
     }
   }
 
