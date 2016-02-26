@@ -1,0 +1,37 @@
+{
+  "name": "project5",
+  "version": "0.1.0",
+  "description": "Project 5 : Neighborhood Map",
+  "main": "./src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdbence/FE-Nanodegree"
+  },
+  "keywords": [
+    "html5",
+    "js",
+    "udacity"
+  ],
+  "author": "Joshua Bence",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdbence/FE-Nanodegree/issues"
+  },
+  "homepage": "https://github.com/jdbence/FE-Nanodegree/tree/master/project5",
+  "devDependencies": {
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-plumber": "^1.0.1",
+    "gulp-uglify": "^1.5.1",
+    "gulp-useref": "^3.0.4",
+    "knockout": "^3.4.0"
+  },
+  "dependencies": {}
+}
