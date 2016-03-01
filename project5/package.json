@@ -31,7 +31,9 @@
     "gulp-plumber": "^1.0.1",
     "gulp-uglify": "^1.5.1",
     "gulp-useref": "^3.0.4",
-    "knockout": "^3.4.0"
+    "knockout": "^3.4.0",
+    "knockout-mapping": "^2.6.0",
+    "packery": "^2.0.0"
   },
   "dependencies": {}
 }

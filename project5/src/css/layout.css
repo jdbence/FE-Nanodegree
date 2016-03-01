@@ -1,0 +1,61 @@
+html,body{
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 12px sans-serif;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+}
+
+nav, article {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+nav {
+  -webkit-flex: 0 0 30em;
+  flex: 0 0 30em;
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.nav-header {
+  -webkit-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.nav-content {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: auto;
+}
+
+.nav-footer {
+  -webkit-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+nav ul {
+  margin: 0;
+}
+
+article {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+}

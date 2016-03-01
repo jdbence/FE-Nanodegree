@@ -1,0 +1,46 @@
+.mobile-vis {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  nav{
+    position: absolute;
+    z-index: 100;
+    width: 30em;
+    max-width: 75%;
+    left: -30em;
+    transition: all 0.5s;
+  }
+  nav.show {
+    left: 0;
+  }
+  .mobile-vis {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 7em;
+    right: 7em;
+  }
+  .mobile-vis.show{
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+  }
+  .mobile-vis.show .search-icon{
+    display: none;
+  }
+  .grid-item {
+    width: 50%;
+  }
+  .clickblock{
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
