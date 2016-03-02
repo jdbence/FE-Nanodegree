@@ -1,6 +1,7 @@
 var StateFilterModel = function(items, filter) {
   var ref = this;
   
+  // Get a unique list of all the state options
   ref.getUniqueValues = function(items){
     var a = [];
     for (var i = 0; i < items.length; i++) {

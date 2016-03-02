@@ -38,38 +38,35 @@
     <article>
       <div id="map" class="hide"></div>
       <div id="photos" data-bind="template: 'photosTemplate', visible: isVisible"></div>
-      
-      <!--<div class="loader">-->
-      <!--  <img src="./img/map.png" />-->
-      <!--  <h1>Loading Map</h1>-->
-      <!--</div>-->
     </article>
     <!-- build:css ./css/all.min.css lazyload-->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link href="../node_modules/material-design-icons/iconfont/material-icons.css" rel="stylesheet">
-    <link href="./css/layout.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="./css/mobile.css" rel="stylesheet">
+    <link href="../node_modules/material-design-icons/iconfont/material-icons.css" rel="stylesheet" />
+    <link href="./css/layout.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/mobile.css" rel="stylesheet" />
     <!-- endbuild -->
     
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
     <!-- build:js ./js/all.min.js async-->
-    <script type="text/javascript" src="../node_modules/knockout/build/output/knockout-latest.js"></script>
-    <script type="text/javascript" src="../node_modules/knockout-mapping/dist/knockout.mapping.js"></script>
-    <script type="text/javascript" src="../node_modules/packery/dist/packery.pkgd.js"></script>
-    <script type="text/javascript" src="./js/Constants.js"></script>
-    <script type="text/javascript" src="./js/util/Util.js"></script>
-    <script type="text/javascript" src="./js/util/El.js"></script>
-    <script type="text/javascript" src="./js/ui/NavModel.js"></script>
-    <script type="text/javascript" src="./js/ui/MarkerModel.js"></script>
-    <script type="text/javascript" src="./js/ui/MapModel.js"></script>
-    <script type="text/javascript" src="./js/ui/ListItemModel.js"></script>
-    <script type="text/javascript" src="./js/ui/ListModel.js"></script>
-    <script type="text/javascript" src="./js/ui/SearchModel.js"></script>
-    <script type="text/javascript" src="./js/ui/StateFilterModel.js"></script>
-    <script type="text/javascript" src="./js/ui/DescriptionModel.js"></script>
-    <script type="text/javascript" src="./js/ui/PhotosModel.js"></script>
-    <script type="text/javascript" src="./js/App.js"></script>
+    <script src="../node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script src="../node_modules/knockout-mapping/dist/knockout.mapping.js"></script>
+    <script src="../node_modules/packery/dist/packery.pkgd.js"></script>
+    <script src="../node_modules/store/store.js"></script>
+    <script src="./js/Constants.js"></script>
+    <script src="./js/util/Util.js"></script>
+    <script src="./js/util/El.js"></script>
+    <script src="./js/ui/NavModel.js"></script>
+    <script src="./js/ui/MarkerModel.js"></script>
+    <script src="./js/ui/MapModel.js"></script>
+    <script src="./js/ui/ListItemModel.js"></script>
+    <script src="./js/ui/ListModel.js"></script>
+    <script src="./js/ui/SearchModel.js"></script>
+    <script src="./js/ui/StateFilterModel.js"></script>
+    <script src="./js/ui/DescriptionModel.js"></script>
+    <script src="./js/ui/PhotosModel.js"></script>
+    <script src="./js/ui/LocalStorageModel.js"></script>
+    <script src="./js/App.js"></script>
+    <!-- endbuild -->
     <script id="descriptionTemplate" type="text/html">
       <h3 data-bind="text: picked().label"></h3>
       <p>Elevation: <span data-bind="text: picked().elevation"></span></p>
@@ -85,12 +82,11 @@
     </script>
     <script id="photosTemplate" type="text/html">
       <div class="photoblock" data-bind="visible: isPhotoViewerVisible, click: closeImage">
-        <img data-bind="attr: { src: selectedImage }"/>
+        <img alt="photo" data-bind="attr: { src: selectedImage }"/>
       </div>
       <div data-bind="foreach: images" class="grid">
-        <img class='grid-item' data-bind="attr: { src: $data }, event: { load: $parent.imageLoaded }, click: $parent.selectImage"/>
+        <img class="grid-item" alt="photo" data-bind="attr: { src: $data }, event: { load: $parent.imageLoaded }, click: $parent.selectedImage"/>
       </div>
     </script>
-    <!-- endbuild -->
   </body>
 </html>

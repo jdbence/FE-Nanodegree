@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-  concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
   imagemin = require('gulp-imagemin'),
   plumber = require('gulp-plumber'),
@@ -11,7 +10,7 @@ var gulp = require('gulp'),
   
 var onError = function(err) {
 	console.log(err);
-}
+};
 
 gulp.task('images', function () {
     return gulp.src(config.src + '/**/*.{png,gif,jpg}')
@@ -33,10 +32,15 @@ gulp.task('html', function () {
     .pipe(gulp.dest(config.build));
 });
 
+gulp.task('font', function() {
+   gulp.src('./node_modules/material-design-icons/iconfont/*.{ttf,woff,woff2,eot,svg}')
+   .pipe(gulp.dest(config.build + "/css"));
+});
+
 // Removes all the files from the build folder
 gulp.task("clean", function () {
   return del([config.build + '/**', '!' + config.build]);
 });
 
-gulp.task('build', ['html']);
+gulp.task('build', ['html', 'font']);
 gulp.task('default', ['build']);

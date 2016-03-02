@@ -9,35 +9,65 @@
   </head>
 
   <body>
+    <div id="menu" class="mobile-vis" data-bind="css: visibleClass">
+      <div class="clickblock" data-bind="visible: isVisible, click: toggleSearchBar" ></div>
+      <button class="search-btn search-icon" data-bind="click: toggleSearchBar">
+        <i class="material-icons">search</i>
+      </button>
+    </div>
     <nav>
       <div class="nav-header">
         <div id="search">
           <input placeholder="Search National Parks" data-bind="textInput: search"/>
           <div class="search-buttons">
-            <button class="search-btn search-icon"></button>
-            <button class="search-btn close-icon" data-bind="click: clearSearch"></button>
+            <button class="search-btn close-icon" data-bind="click: clearSearch">
+              <i class="material-icons">clear</i>
+            </button>
           </div>
         </div>
         <div id="state">
+          <i class="material-icons arrow">arrow_drop_down</i>
           <select data-bind="options: options, value: filter"></select>
         </div>
       </div>
       <div class="nav-content">
-        <ul id="list" data-bind="foreach: listItems, visible: listItems().length > 0">
-          <li data-bind="text: label, style: {color:color}, click: $parent.selectItem, visible: isVisible"></li>
-        </ul>
-        <div id="description" data-bind="template: 'descriptionTemplate'"></div>
+        <div id="list" data-bind="template: 'listTemplate', visible: isVisible"></div>
+        <div id="description" data-bind="template: 'descriptionTemplate', visible: isVisible"></div>
       </div>
     </nav>
     <article>
       <div id="map" class="hide"></div>
-      <div class="loader">
-        <img src="./img/map.png" />
-        <h1>Loading Map</h1>
-      </div>
+      <div id="photos" data-bind="template: 'photosTemplate', visible: isVisible"></div>
+      
+      <!--<div class="loader">-->
+      <!--  <img src="./img/map.png" />-->
+      <!--  <h1>Loading Map</h1>-->
+      <!--</div>-->
     </article>
     <link rel="stylesheet" href="./css/all.min.css" lazyload>
     
+    <script async src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
     <script src="./js/all.min.js" async></script>
+    <script id="descriptionTemplate" type="text/html">
+      <h3 data-bind="text: picked().label"></h3>
+      <p>Elevation: <span data-bind="text: picked().elevation"></span></p>
+      <div data-bind="html: picked().content"></div>
+    </script>
+    <script id="listTemplate" type="text/html">
+      <ul data-bind="foreach: listItems">
+        <li data-bind="click: $parent.selectItem, visible: isVisible">
+          <i class="material-icons" data-bind="style: {color: color}">place</i>
+          <span data-bind="text: label"></span>
+        </li>
+      </ul>
+    </script>
+    <script id="photosTemplate" type="text/html">
+      <div class="photoblock" data-bind="visible: isPhotoViewerVisible, click: closeImage">
+        <img alt="photo" data-bind="attr: { src: selectedImage }"/>
+      </div>
+      <div data-bind="foreach: images" class="grid">
+        <img class="grid-item" alt="photo" data-bind="attr: { src: $data }, event: { load: $parent.imageLoaded }, click: $parent.selectedImage"/>
+      </div>
+    </script>
   </body>
 </html>

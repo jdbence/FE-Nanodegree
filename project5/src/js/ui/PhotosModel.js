@@ -4,11 +4,12 @@ function PhotosModel(items, search) {
   ref.isVisible = ko.observable(false);
   ref.picked = ko.observable(items()[0]);
   ref.blank = ko.mapping.fromJS({images:[]});
-  var pckry;
+  ref.selectedImage = ko.observable("");
+  ref.pckry;
   
   // Wait frame
   setTimeout(function(){
-    pckry = new Packery(document.querySelector('.grid'), {
+    ref.pckry = new Packery(document.querySelector('.grid'), {
       itemSelector: '.grid-item'
     });
   }, 0);
@@ -28,7 +29,7 @@ function PhotosModel(items, search) {
         if(item.images().length === 0){
           ref.getFlickr(item, encodeURIComponent(newValue));
         } else {
-          pckry.reloadItems();
+          ref.pckry.reloadItems();
         }
         ref.isVisible(true);
         return;
@@ -48,7 +49,7 @@ function PhotosModel(items, search) {
           return item.media.m;
         }));
         
-        pckry.reloadItems();
+        ref.pckry.reloadItems();
         
       }else{
     	  item.images([]);
@@ -58,7 +59,7 @@ function PhotosModel(items, search) {
   
   // Adjust image layout
   ref.imageLoaded = function() {
-    pckry.layout();
+    ref.pckry.layout();
   };
   
   // Return the images
@@ -66,16 +67,12 @@ function PhotosModel(items, search) {
     return ref.picked().images();
   });
   
-  ref.selectImage = function (item) {
-    ref.selectedImage(item);
-  };
-  
+  // Remove the selected image
   ref.closeImage = function () {
     ref.selectedImage("");
   };
   
-  ref.selectedImage = ko.observable("");
-  
+  // Determines if PhotoViewer is shown
   ref.isPhotoViewerVisible = ko.computed(function() {
     return ref.selectedImage() !== "";
   });
