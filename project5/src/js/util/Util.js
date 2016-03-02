@@ -22,6 +22,21 @@ var Util = (function() {
         
         jsonpScript.setAttribute("src", url += '&callback=' + callbackName);
         head.appendChild(jsonpScript);
+      },
+      // Converts a String to a color
+      stringColor: function(str){
+        var colour = '#';
+        var hash = 0;
+        var i;
+        var value;
+        for (i = 0; i < str.length; i++) {
+          hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        for (i = 0; i < 3; i++) {
+          value = (hash >> (i * 8)) & 0xFF;
+          colour += ('00' + value.toString(16)).substr(-2);
+        }
+        return colour;
       }
     };
 })();

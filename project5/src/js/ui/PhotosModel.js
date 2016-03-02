@@ -4,10 +4,14 @@ function PhotosModel(items, search) {
   ref.isVisible = ko.observable(false);
   ref.picked = ko.observable(items()[0]);
   ref.blank = ko.mapping.fromJS({images:[]});
+  var pckry;
   
-  var pckry = new Packery(document.querySelector('.grid'), {
-    itemSelector: '.grid-item'
-  });
+  // Wait frame
+  setTimeout(function(){
+    pckry = new Packery(document.querySelector('.grid'), {
+      itemSelector: '.grid-item'
+    });
+  }, 0);
   
   // SearchFilter changed, show new information
   search.subscribe(function(newValue) {
@@ -18,6 +22,7 @@ function PhotosModel(items, search) {
       item = items[i];
       if(item.label.toLowerCase() === val) {
         ref.picked(item);
+        ref.closeImage();
         
         // Attempt to get local images
         if(item.images().length === 0){
@@ -25,11 +30,11 @@ function PhotosModel(items, search) {
         } else {
           pckry.reloadItems();
         }
-        
         ref.isVisible(true);
         return;
       }
     }
+    ref.closeImage();
     ref.picked(ref.blank);
     ref.isVisible(false);
   });
@@ -59,5 +64,19 @@ function PhotosModel(items, search) {
   // Return the images
   ref.images = ko.computed(function() {
     return ref.picked().images();
+  });
+  
+  ref.selectImage = function (item) {
+    ref.selectedImage(item);
+  };
+  
+  ref.closeImage = function () {
+    ref.selectedImage("");
+  };
+  
+  ref.selectedImage = ko.observable("");
+  
+  ref.isPhotoViewerVisible = ko.computed(function() {
+    return ref.selectedImage() !== "";
   });
 }

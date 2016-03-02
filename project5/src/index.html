@@ -12,7 +12,7 @@
     <div id="menu" class="mobile-vis" data-bind="css: visibleClass">
       <div class="clickblock" data-bind="visible: isVisible, click: toggleSearchBar" ></div>
       <button class="search-btn search-icon" data-bind="click: toggleSearchBar">
-        <i class="material-icons dp48">search</i>
+        <i class="material-icons">search</i>
       </button>
     </div>
     <nav>
@@ -31,19 +31,14 @@
         </div>
       </div>
       <div class="nav-content">
-        <ul id="list" data-bind="foreach: listItems, visible: isVisible">
-          <li data-bind="text: label, css: selectedClass, click: $parent.selectItem, visible: isVisible"></li>
-        </ul>
+        <div id="list" data-bind="template: 'listTemplate', visible: isVisible"></div>
         <div id="description" data-bind="template: 'descriptionTemplate', visible: isVisible"></div>
       </div>
     </nav>
     <article>
       <div id="map" class="hide"></div>
-      <div id="photos" data-bind="visible: isVisible">
-        <div data-bind="foreach: images" class="grid">
-          <img class='grid-item' data-bind="attr: { src: $data }, event: { load: $parent.imageLoaded }"/>
-        </div>
-      </div>
+      <div id="photos" data-bind="template: 'photosTemplate', visible: isVisible"></div>
+      
       <!--<div class="loader">-->
       <!--  <img src="./img/map.png" />-->
       <!--  <h1>Loading Map</h1>-->
@@ -79,6 +74,22 @@
       <h3 data-bind="text: picked().label"></h3>
       <p>Elevation: <span data-bind="text: picked().elevation"></span></p>
       <div data-bind="html: picked().content"></div>
+    </script>
+    <script id="listTemplate" type="text/html">
+      <ul data-bind="foreach: listItems">
+        <li data-bind="click: $parent.selectItem, visible: isVisible">
+          <i class="material-icons" data-bind="style: {color: color}">place</i>
+          <span data-bind="text: label"></span>
+        </li>
+      </ul>
+    </script>
+    <script id="photosTemplate" type="text/html">
+      <div class="photoblock" data-bind="visible: isPhotoViewerVisible, click: closeImage">
+        <img data-bind="attr: { src: selectedImage }"/>
+      </div>
+      <div data-bind="foreach: images" class="grid">
+        <img class='grid-item' data-bind="attr: { src: $data }, event: { load: $parent.imageLoaded }, click: $parent.selectImage"/>
+      </div>
     </script>
     <!-- endbuild -->
   </body>

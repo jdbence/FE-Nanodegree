@@ -58,7 +58,7 @@ var MapModel = function (data, searchFilter, stateFilter) {
   function visibleMarkers (search, state, markers) {
     var a = [];
     for(var i = 0; i < markers.length; i++) {
-      if(markers[i].isFiltered(search, state)){
+      if(!markers[i].isFiltered(search, state)){
         markers[i].isVisible(true);
         a.push(markers[i]);
       }else{
@@ -114,11 +114,15 @@ var MapModel = function (data, searchFilter, stateFilter) {
     return markers;
   }
   
-  function adjustMapBounds (map, markers) {
-    if(markers.length > 0){
+  function adjustMapBounds (map, locMarkers) {
+    // Tell GMaps the page resized
+    google.maps.event.trigger(map, 'resize');
+    
+    // Fit the bounds around the visible markers
+    if(locMarkers.length > 0){
       var bounds = new google.maps.LatLngBounds();
-      for(var i=0; i<markers.length; i++) {
-         bounds.extend(markers[i].getPosition());
+      for(var i=0; i<locMarkers.length; i++) {
+         bounds.extend(locMarkers[i].getPosition());
       }
       map.setCenter(bounds.getCenter());
       map.fitBounds(bounds);

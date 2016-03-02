@@ -19,8 +19,11 @@
     display: block;
     position: absolute;
     z-index: 1;
-    bottom: 7em;
-    right: 7em;
+    /*bottom: 7em;*/
+    /*right: 7em;*/
+    right: 0;
+    bottom: 0;
+    padding: 2em;
   }
   .mobile-vis.show{
     right: 0;
