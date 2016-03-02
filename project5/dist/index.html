@@ -41,7 +41,15 @@
     </article>
     <link rel="stylesheet" href="./css/all.min.css" lazyload>
     
-    <script async src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+    <script>
+      // Called when GoogleMaps is loaded
+      function mapReady(){
+        window.dispatchEvent(new Event('GMapsReady'));
+      }
+    </script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&callback=mapReady"></script>
+    
     <script src="./js/all.min.js" async></script>
     <script id="descriptionTemplate" type="text/html">
       <h3 data-bind="text: picked().label"></h3>

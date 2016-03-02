@@ -1,4 +1,4 @@
-(function () {
+(function App() {
   
   function initialize () {
     var items = ko.observableArray(Util.map(Constants.list, function(item) { return new ListItemModel(item) }));
@@ -16,6 +16,11 @@
     ko.applyBindings(new PhotosModel(items, searchFilter), document.getElementById('photos'));
   }
   
-  // Run the initialize after the window loading finished
-  google.maps.event.addDomListener(window, 'load', initialize);
+  // GoogleMaps ready
+  if(typeof google !== "undefined"){
+    initialize();
+  }else{
+    // Run the initialize after GoogleMaps is ready
+    window.addEventListener('GMapsReady', initialize, false);
+  }
 })();

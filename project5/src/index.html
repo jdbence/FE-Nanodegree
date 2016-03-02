@@ -46,7 +46,15 @@
     <link href="./css/mobile.css" rel="stylesheet" />
     <!-- endbuild -->
     
-    <script async src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+    <script>
+      // Called when GoogleMaps is loaded
+      function mapReady(){
+        window.dispatchEvent(new Event('GMapsReady'));
+      }
+    </script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&callback=mapReady"></script>
+    
     <!-- build:js ./js/all.min.js async-->
     <script src="../node_modules/knockout/build/output/knockout-latest.js"></script>
     <script src="../node_modules/knockout-mapping/dist/knockout.mapping.js"></script>
