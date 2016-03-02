@@ -15,7 +15,7 @@ function PhotosModel(items, search) {
   }, 0);
   
   // SearchFilter changed, show new information
-  search.subscribe(function(newValue) {
+  ref.onSearchUpdated = function(newValue) {
     var val = newValue.toLowerCase();
     var items = ref.items();
     var item;
@@ -38,10 +38,13 @@ function PhotosModel(items, search) {
     ref.closeImage();
     ref.picked(ref.blank);
     ref.isVisible(false);
-  });
+  };
+  
+  // SearchFilter changed
+  search.subscribe(ref.onSearchUpdated);
   
   // Get Flickr images
-  this.getFlickr = function (item, name){
+  ref.getFlickr = function (item, name){
     Util.getJSON('https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=' + name, function(response){
       if(response !== null){
         

@@ -3,6 +3,13 @@ var LocalStorageModel = function(searchFilter, stateFilter) {
   ref.searchFilter = searchFilter;
   ref.stateFilter = stateFilter;
   
+  ref.stateFilter(store.get('stateFilter') || 'California');
+  
+  // Wait Frame
+  setTimeout(function(){
+    ref.searchFilter(store.get('searchFilter') || '');
+  }, 0);
+  
   // Save changes to local store
   ref.stateFilter.subscribe(function(newValue) {
     store.set('stateFilter', newValue);

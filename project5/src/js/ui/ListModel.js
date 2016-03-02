@@ -16,15 +16,24 @@ var ListModel = function (items, search, stateFilter) {
     var li = ref.listItems();
     var item;
     var count = 0;
+    var validItem = null;
     for (var i = 0; i < li.length; i++) {
       item = li[i];
       item.isVisible(!item.isFiltered(ref.search(), ref.stateFilter()));
       if(item.isVisible()){
         count++;
       }
+      if(item.label === ref.search()){
+        validItem = item;
+      }
     }
     
     // Hide the list if nothing found
     ref.isVisible(count > 0);
+    
+    // Select the item automatically if it's a direct match
+    if(validItem !== null){
+      ref.selectItem(validItem);
+    }
   });
 };

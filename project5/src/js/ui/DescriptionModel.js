@@ -5,7 +5,7 @@ function DescriptionModel(items, search) {
   ref.picked = ko.observable(items()[0]);
   
   // SearchFilter changed, show new information
-  search.subscribe(function(newValue) {
+  ref.onSearchUpdated = function(newValue) {
     var val = newValue.toLowerCase();
     var items = ref.items();
     var item;
@@ -24,10 +24,10 @@ function DescriptionModel(items, search) {
       }
     }
     ref.isVisible(false);
-  });
+  };
   
   // Get information from wikipedia
-  this.getWiki = function (item, name){
+  ref.getWiki = function (item, name){
     Util.getJSON('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=' + name, function(response){
       var pText = 'Sorry no more info is provided :/';
       if(response !== null){
@@ -42,4 +42,7 @@ function DescriptionModel(items, search) {
     	item.content(pText);
     });
   };
+  
+  // SearchFilter changed
+  search.subscribe(ref.onSearchUpdated);
 }

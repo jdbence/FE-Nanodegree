@@ -1,4 +1,5 @@
 var MapModel = function (data, searchFilter, stateFilter) {
+  var ref = this;
   var infoWindow = new google.maps.InfoWindow();
   var elevator = new google.maps.ElevationService;
   var map = createMap();
@@ -8,7 +9,7 @@ var MapModel = function (data, searchFilter, stateFilter) {
   adjustMapBounds(map, visibleMarkers(searchFilter(), stateFilter(), markers));
   
   // SearchFilter changed
-  searchFilter.subscribe(function(newValue) {
+  ref.onSearchUpdated = function(newValue) {
     infoWindow.close();
     el.addClass(document.getElementById('map'), 'hide');
     
@@ -22,7 +23,10 @@ var MapModel = function (data, searchFilter, stateFilter) {
         showMarkerInfo(newValue);
       }
     }, 250);
-  });
+  };
+  
+  // SearchFilter changed
+  searchFilter.subscribe(ref.onSearchUpdated);
   
   // StateFilter changed
   stateFilter.subscribe(function(newValue) {
@@ -34,7 +38,7 @@ var MapModel = function (data, searchFilter, stateFilter) {
   });
   
   // InfoWindow closed
-  google.maps.event.addListener(infoWindow,'closeclick',function(){
+  google.maps.event.addListener(infoWindow, 'closeclick', function(){
     searchFilter('');
   });
   
