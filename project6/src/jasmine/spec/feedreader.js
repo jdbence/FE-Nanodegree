@@ -75,7 +75,7 @@ $(function() {
         it('menu visible on click', function() {
             $('.menu-icon-link').trigger('click');
             expect($('body')).not.toHaveClass('menu-hidden');
-        });   
+        });
         
         // hide menu on second click
         it('menu hidden on click', function() {
@@ -107,7 +107,7 @@ $(function() {
          */
         it('has atleast 1 entry', function() {
             expect($('.entry')).toExist();
-        });  
+        }); 
     });
     
     describe('New Feed Selection', function() {
