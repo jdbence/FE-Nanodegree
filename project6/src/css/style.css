@@ -90,3 +90,13 @@ h2 {
     padding: 1em;
     margin: 0.5em 0;
 }
+
+.jasmine_html-reporter {
+    position: absolute;
+    width: 50%;
+    overflow: hidden;
+    max-width: 50em;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
