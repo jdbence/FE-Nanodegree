@@ -162,22 +162,26 @@ $(function() {
               var s = string.split('-');
               return Date.UTC(s[0], s[1], s[2]);
             };
-        var mockFeed;
+        var featureFixture;
         
         beforeAll(function () {
             jasmine.getJSONFixtures().fixturesPath = './jasmine/spec/javascripts/fixtures/json/';
-            mockFeed = getJSONFixture('futureFeaturefixture.json');
+            featureFixture = getJSONFixture('futureFeatureFixture.json');
         });
         
         // Get Feed list from API instead of hardcoded locally
         // Real version would use AJAX request
         it('API feed from remote host', function() {
-            expect(mockFeed.feed.entries.length).toBeGreaterThan(0);
+            expect(featureFixture.feed).toBeDefined();
+            expect(featureFixture.feed).not.toBeNull();
+            expect(featureFixture.feed.entries).toBeDefined();
+            expect(featureFixture.feed.entries).not.toBeNull();
+            expect(featureFixture.feed.entries.length).toBeGreaterThan(0);
         });
         
         // Make sure each feed has an image
         it('API feed has img', function() {
-            mockFeed.feed.entries.forEach(function(feed) {
+            featureFixture.feed.entries.forEach(function(feed) {
                 expect(feed.img).toBeDefined();
                 expect(feed.img).not.toBeNull();
                 expect(feed.img).not.toBe('');
@@ -187,7 +191,7 @@ $(function() {
         // Check for new articles since last login
         it('API feed has atleast 1 new article', function() {
             var articles = 0;
-            mockFeed.feed.entries.forEach(function(feed) {
+            featureFixture.feed.entries.forEach(function(feed) {
                 expect(feed.pubdate).toBeDefined();
                 expect(feed.pubdate).not.toBeNull();
                 if(utc(feed.pubdate) >= utc(lastLogin)) {
