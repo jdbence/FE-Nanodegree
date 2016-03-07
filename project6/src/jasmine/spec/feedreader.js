@@ -75,7 +75,7 @@ $(function() {
         it('menu visible on click', function() {
             $('.menu-icon-link').trigger('click');
             expect($('body')).not.toHaveClass('menu-hidden');
-        });   
+        });
         
         // hide menu on second click
         it('menu hidden on click', function() {
@@ -94,7 +94,7 @@ $(function() {
         });
         
         // reset feed after tests
-        afterEach(function() {
+        afterAll(function() {
             $('.header-title').html(header);
             $('.feed').empty();
         });
@@ -107,21 +107,34 @@ $(function() {
          */
         it('has atleast 1 entry', function() {
             expect($('.entry')).toExist();
-        });  
+        }); 
     });
     
     describe('New Feed Selection', function() {
         var header = $('.header-title').html();
-        var feed;
+        var feed0 = null;
+        var feed1 = null;
+        var feed2 = null;
         
-        beforeEach(function(done) {
-            // Async call done after feed loaded
-            loadFeed(0, done);
-            feed = $('.feed').html();
+        beforeAll(function(done) {
+            // Async feed 0
+            loadFeed(0, function(){
+                feed0 = $('.feed').html();
+                // Async feed 1
+                loadFeed(1, function(){
+                    feed1 = $('.feed').html();
+                    // Async feed 2
+                    loadFeed(2, function(){
+                        feed2 = $('.feed').html();
+                        // Run Spec
+                        done();
+                    });
+                });
+            });
         });
         
         // reset feed after tests
-        afterEach(function() {
+        afterAll(function() {
             $('.header-title').html(header);
             $('.feed').empty();
         });
@@ -130,8 +143,16 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        it('feed changed', function() {
-            expect($('.feed').html()).not.toEqual(feed);
+        it('feed changed', function(done) {
+            // Make sure feed was set
+            expect(feed0).not.toBeNull();
+            expect(feed1).not.toBeNull();
+            expect(feed2).not.toBeNull();
+            // Make sure feed is different
+            expect(feed1).not.toEqual(feed0);
+            expect(feed2).not.toEqual(feed1);
+            // Async
+            done();
         });
     });
     
@@ -152,6 +173,7 @@ $(function() {
             var spyEvent = spyOnEvent(link, 'click');
             $(link).trigger('click');
             expect($('body')).toHaveClass('menu-hidden');
+            expect(spyEvent).toHaveBeenTriggered();
             expect(spyEvent).toHaveBeenPrevented();
         });
     });
@@ -162,22 +184,26 @@ $(function() {
               var s = string.split('-');
               return Date.UTC(s[0], s[1], s[2]);
             };
-        var mockFeed;
+        var featureFixture;
         
         beforeAll(function () {
             jasmine.getJSONFixtures().fixturesPath = './jasmine/spec/javascripts/fixtures/json/';
-            mockFeed = getJSONFixture('futureFeaturefixture.json');
+            featureFixture = getJSONFixture('futureFeatureFixture.json');
         });
         
         // Get Feed list from API instead of hardcoded locally
         // Real version would use AJAX request
         it('API feed from remote host', function() {
-            expect(mockFeed.feed.entries.length).toBeGreaterThan(0);
+            expect(featureFixture.feed).toBeDefined();
+            expect(featureFixture.feed).not.toBeNull();
+            expect(featureFixture.feed.entries).toBeDefined();
+            expect(featureFixture.feed.entries).not.toBeNull();
+            expect(featureFixture.feed.entries.length).toBeGreaterThan(0);
         });
         
         // Make sure each feed has an image
         it('API feed has img', function() {
-            mockFeed.feed.entries.forEach(function(feed) {
+            featureFixture.feed.entries.forEach(function(feed) {
                 expect(feed.img).toBeDefined();
                 expect(feed.img).not.toBeNull();
                 expect(feed.img).not.toBe('');
@@ -187,7 +213,7 @@ $(function() {
         // Check for new articles since last login
         it('API feed has atleast 1 new article', function() {
             var articles = 0;
-            mockFeed.feed.entries.forEach(function(feed) {
+            featureFixture.feed.entries.forEach(function(feed) {
                 expect(feed.pubdate).toBeDefined();
                 expect(feed.pubdate).not.toBeNull();
                 if(utc(feed.pubdate) >= utc(lastLogin)) {
