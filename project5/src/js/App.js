@@ -1,26 +1,49 @@
 (function App() {
-  
-  function initialize () {
-    var items = ko.observableArray(Util.map(Constants.list, function(item) { return new ListItemModel(item) }));
+  var ref = this;
+  ref.initialize = function(mapClass) {
+    var items = ko.observableArray(Util.map(Constants.LIST, function(item) { return new ListItemModel(item) }));
     var searchFilter = ko.observable('');
     var stateFilter = ko.observable('California');
     var isNavOpen = ko.observable(false);
     var local = new LocalStorageModel(searchFilter, stateFilter);
     
-    ko.applyBindings(new NavModel(isNavOpen), document.getElementById('menu'));
-    ko.applyBindings(new MapModel(items, searchFilter, stateFilter), document.getElementById('map'));
-    ko.applyBindings(new ListModel(items, searchFilter, stateFilter), document.getElementById('list'));
-    ko.applyBindings(new SearchModel(searchFilter, stateFilter), document.getElementById('search'));
-    ko.applyBindings(new StateFilterModel(items, stateFilter), document.getElementById('state'));
-    ko.applyBindings(new DescriptionModel(items, searchFilter), document.getElementById('description'));
-    ko.applyBindings(new PhotosModel(items, searchFilter), document.getElementById('photos'));
-  }
+    ko.applyBindings(new NavModel(isNavOpen), el.get('menu'));
+    ko.applyBindings(new mapClass(items, searchFilter, stateFilter), el.get('map'));
+    ko.applyBindings(new ListModel(items, searchFilter, stateFilter), el.get('list'));
+    ko.applyBindings(new SearchModel(searchFilter, stateFilter), el.get('search'));
+    ko.applyBindings(new StateFilterModel(items, stateFilter), el.get('state'));
+    ko.applyBindings(new DescriptionModel(items, searchFilter), el.get('description'));
+    ko.applyBindings(new PhotosModel(items, searchFilter), el.get('photos'));
+    
+    // Remove startup listeners
+    window.removeEventListener('GMAPS_LOAD_SUCCESS', ref.onSuccess);
+    window.removeEventListener('GMAPS_LOAD_FAILED', ref.onFailed);
+  };
+  
+  // GoogleMaps failed to load
+  ref.onFailed = function() {
+    ref.initialize(NoDataMapModel);
+  };
+  
+  // GoogleMaps sucessfully loaded
+  ref.onMapSuccess = function() {
+    ref.initialize(MapModel);
+  };
   
   // GoogleMaps ready
-  if(typeof google !== "undefined"){
-    initialize();
-  }else{
-    // Run the initialize after GoogleMaps is ready
-    window.addEventListener('GMapsReady', initialize, false);
+  if(typeof google !== "undefined") {
+    ref.onMapSuccess();
+  }
+  // Issue with app
+  else if (typeof appstatus !== "undefined") {
+    if (appstatus === "GMAPS_LOAD_SUCCESS") {
+      ref.onSuccess();
+    } else {
+      ref.onFailed();
+    }
+  } else {
+    // Listen for events from script loader
+    window.addEventListener('GMAPS_LOAD_SUCCESS', ref.onSuccess, false);
+    window.addEventListener('GMAPS_LOAD_FAILED', ref.onFailed, false);
   }
 })();

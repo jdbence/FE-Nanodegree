@@ -11,11 +11,11 @@ var MapModel = function (data, searchFilter, stateFilter) {
   // SearchFilter changed
   ref.onSearchUpdated = function(newValue) {
     infoWindow.close();
-    el.addClass(document.getElementById('map'), 'hide');
+    el.addClass(el.get('map'), 'hide');
     
     // Wait a frame
     setTimeout(function(){
-      el.removeClass(document.getElementById('map'), 'hide');
+      el.removeClass(el.get('map'), 'hide');
       adjustMapBounds(map, visibleMarkers(searchFilter(), stateFilter(), markers));
       
       // Show only the matching markers (if one is found)
@@ -85,7 +85,7 @@ var MapModel = function (data, searchFilter, stateFilter) {
   }
   
   function createMap () {
-    var element = document.getElementById('map');
+    var element = el.get('map');
     var maxZoom = 10;
     var map = new google.maps.Map(element, {
       zoom: 1,

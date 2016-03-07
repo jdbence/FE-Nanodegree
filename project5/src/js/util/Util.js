@@ -9,22 +9,32 @@ var Util = (function() {
         return newArray;
       },
       // Makes a JSON request
-      getJSON: function (url, callback, callbackName){
-        callbackName = callbackName || ('jsonp' + Math.round(Math.random() * 99999999));
-        var jsonpScript = document.createElement('script');
-        var head = document.getElementsByTagName("head")[0];
-        
-        window[callbackName] = function(json){
-          head.removeChild(jsonpScript);
-          callback(json);
-          delete window[callbackName];
-        };
-        
-        jsonpScript.setAttribute("src", url += '&callback=' + callbackName);
-        head.appendChild(jsonpScript);
+      getJSONP: function (url, callbackName) {
+        return new Promise(function(resolve, reject) {
+          callbackName = callbackName || ('jsonp' + Math.round(Math.random() * 99999999));
+          var script = document.createElement('script');
+          var head = document.getElementsByTagName("head")[0];
+          
+          // Create global method for JSONP
+          window[callbackName] = resolve;
+          
+          // Request errored
+          script.onerror = reject;
+          
+          // Request finished
+          script.onload = function() {
+      	    delete window[callbackName];
+          	this.remove();
+          };
+          
+          // Make request
+      		url += url.indexOf('?') === -1 ? '?' : '&';
+          script.setAttribute("src", url += 'callback=' + callbackName);
+          head.appendChild(script);
+        });
       },
       // Converts a String to a color
-      stringColor: function(str){
+      stringColor: function(str) {
         var colour = '#';
         var hash = 0;
         var i;

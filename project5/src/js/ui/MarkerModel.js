@@ -1,24 +1,19 @@
 var MarkerModel = function(map, infoWindow, elevator, data, searchFilter) {
   var ref = this;
   
-  ref.pinIcon = function(color) {
+  ref.pinIcon = function(type) {
     return {
-      path: 'M256,0C167.625,0,96,71.625,96,160c0,23.875,5.25,46.563,14.594,66.875l121.875,264.469,C238.313,504.063,246.688,512,256,512s17.688-7.938,23.531-20.625l121.875-264.5C410.781,206.563,416,183.875,416,160,C416,71.625,344.375,0,256,0z M256,256c-53,0-96-43-96-96s43-96,96-96s96,43,96,96S309,256,256,256z',
-      fillColor: color,
-      fillOpacity: 1,
-      strokeColor: 'none',
-      strokeWeight: 2,
-      scale: 0.09,
+      url: 'img/icons/' + type + '.svg',
+      scale: 1,
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(256, 512),
-      labelOrigin: new google.maps.Point(256, 170)
-   };
+      anchor: new google.maps.Point(16, 46)
+    };
   };
   
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(data.pos[0], data.pos[1]),
     map: map,
-    icon: ref.pinIcon(Util.stringColor(data.label)),
+    icon: ref.pinIcon(data.type),
     state: data.state,
     visible: data.isVisible()
   });
@@ -47,19 +42,19 @@ var MarkerModel = function(map, infoWindow, elevator, data, searchFilter) {
   });
   
   // Marker visibilty
-  this.isVisible = data.isVisible;
+  ref.isVisible = data.isVisible;
   
   // Check if it should be filtered
-  this.isFiltered = data.isFiltered;
+  ref.isFiltered = data.isFiltered;
   
   // Toggles selected state
-  this.isSelected = data.isSelected;
+  ref.isSelected = data.isSelected;
   
   // Elevation of marker
-  this.elevation = data.elevation;
+  ref.elevation = data.elevation;
   
   // Map location
-  this.getPosition = function() {
+  ref.getPosition = function() {
     return marker.getPosition();
   };
   
@@ -69,7 +64,7 @@ var MarkerModel = function(map, infoWindow, elevator, data, searchFilter) {
   };
   
   // Show info about the marker
-  this.showInfo = function() {
+  ref.showInfo = function() {
     marker.setAnimation(google.maps.Animation.DROP);
     infoWindow.open(map, marker);
     infoWindow.setContent('<h3>' + data.label + '</h3>');

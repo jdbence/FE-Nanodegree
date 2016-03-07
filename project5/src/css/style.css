@@ -1,21 +1,29 @@
-html, body{
+html,
+body {
   background-color: #C8E6C9;
 }
 
-*:focus{
+*:focus {
   outline: 0;
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 select::-ms-expand {
   display: none;
 }
+
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 }
 
-#map.hide {
+.map.hide {
   opacity: 0;
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
@@ -25,9 +33,16 @@ select {
   transition: none;
 }
 
-#map{
+.map {
   position: relative;
   width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
   -webkit-flex: 2;
   flex: 2;
   opacity: 1;
@@ -39,29 +54,29 @@ select {
   transition: opacity 0.5s ease-in, transform 1s ease-in-out;
 }
 
-.loader{
+.loader {
   text-align: center;
 }
 
 nav {
   background-color: white;
 }
-#list ul{
+.list ul {
   padding: 0;
   list-style-type: none;
 }
-#list li {
+.list li {
   font-size: 1.3em;
-  padding: 1em;
+  padding: 0.7em;
   border-bottom: 1px solid #eee;
   cursor: pointer;
 }
 
-#list li.selected {
+.list .selected {
   display: none;
 }
 
-#list li:hover{
+.list li:hover {
   color: #65A800;
 }
 
@@ -69,12 +84,12 @@ nav {
   background-color: #4CAF50;
 }
 
-#search{
+.search {
   margin: 1em;
   position: relative;
 }
 
-#search input{
+.search input {
   border: none;
   width: 100%;
   height: 3em;
@@ -88,38 +103,37 @@ nav {
   box-sizing: border-box;
 }
 
-.search-buttons{
+.search-buttons {
   position: absolute;
   top: 0;
   right: 0;
 }
-.search-btn{
+.search-btn {
   padding: 0.5em;
   cursor: pointer;
   background-color: transparent;
   border: none;
 }
 
-.close-icon{
+.close-icon {
   padding: 1em;
   color: grey;
 }
 
-.search-icon{
+.search-icon {
   color: grey;
   background-color: white;
-  border-radius: 3em;
+  border-radius: 3.3em;
   border: none;
-  /*position: absolute;*/
   -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
 }
-.search-icon i{
+.search-icon i {
   font-size: 5em;
 }
 
-#state{
+.state {
   background-color: #388E3C;
   color: #FFF;
   font-size: 1.5em;
@@ -127,14 +141,14 @@ nav {
   padding: 11px 12px;
 }
 
-.arrow{
+.arrow {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
   pointer-events: none;
 }
 
-#state select {
+.state select {
   width: 100%;
   cursor: pointer;
   border: none;
@@ -143,21 +157,25 @@ nav {
   font-size: 1.2em;
 }
 
-#state option {
+.state option {
   color: black;
 }
 
-#description{
+.description {
   padding: 0.5em;
   font-size: 1.5em;
 }
 
-.grid-item { width: 25%; }
+.grid-item {
+  width: 25%;
+}
 
-#photos {
+.photos {
   height: 70%;
   width: 100%;
   overflow-y: auto;
+  background-color: #4CAF50;
+  text-align: center;
 }
 
 .photoblock {
@@ -179,6 +197,29 @@ nav {
 
 .photoblock img {
   border: 1em solid white;
-  width: 50%;
-  height: auto;
+  background-color: black;
+  width: auto;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.retry {
+  font-size: 2em;
+  padding: 0.5em 1em;
+  border-radius: 3.3em;
+  border: none;
+  cursor: pointer;
+  background-color: #FF5252;
+  color: white;
+}
+
+.retry:hover {
+  background-color: #FF1744;
+}
+
+.list-icon{
+  height: 2.5em;
+  width: 10%;
+  vertical-align:middle;
+  padding-right: 0.5em;
 }

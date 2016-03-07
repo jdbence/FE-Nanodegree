@@ -4,16 +4,14 @@ function ListItemModel(data) {
   this.label = data.label;
   this.pos = data.pos;
   this.state = data.state;
+  this.type = data.type;
   this.isSelected = ko.observable(data.isSelected || false);
   this.isVisible = ko.observable(data.isVisible || true);
   this.content = ko.observable('');
   this.elevation = ko.observable(0);
   this.images = ko.observableArray(data.images || []);
   this.color = Util.stringColor(this.label);
-  
-  // this.selectedClass = ko.pureComputed(function() {
-  //   return ref.isSelected() ? 'selected' : '';
-  // }, this);
+  this.svgPath = 'img/icons/' + this.type + '.svg';
   
   // Checks if the item should be filtered from the view
   this.isFiltered = function(search, state) {

@@ -13,7 +13,7 @@ var onError = function(err) {
 };
 
 gulp.task('images', function () {
-    return gulp.src(config.src + '/**/*.{png,gif,jpg}')
+    return gulp.src(config.src + '/**/*.{png,gif,jpg,svg}')
       .pipe(plumber({
 			  errorHandler: onError
 		  }))

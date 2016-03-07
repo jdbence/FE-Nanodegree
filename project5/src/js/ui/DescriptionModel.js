@@ -28,19 +28,21 @@ function DescriptionModel(items, search) {
   
   // Get information from wikipedia
   ref.getWiki = function (item, name){
-    Util.getJSON('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=' + name, function(response){
-      var pText = 'Sorry no more info is provided :/';
-      if(response !== null){
-          var pages = response.query.pages;
-          for (var k in pages){
+    Util.getJSONP('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=' + name).then(
+      function(response) {
+        var pText = 'Sorry no more info is provided :/';
+        var pages = response.query.pages;
+        for (var k in pages){
           if (pages.hasOwnProperty(k) && pages[k].extract !== undefined && pages[k].extract !== "") {
             pText = pages[k].extract;
             break;
           }
         }
+        item.content(pText);
+      }, function(error) {
+        item.content('Issue getting information from Wikipedia');
       }
-    	item.content(pText);
-    });
+    );
   };
   
   // SearchFilter changed

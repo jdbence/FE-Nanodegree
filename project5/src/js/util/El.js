@@ -12,6 +12,9 @@ var el = (function() {
         }else{
           element.className = element.className.replace(new RegExp(className, 'g'), '');
         }
+      },
+      get: function(className) {
+        return document.getElementsByClassName(className)[0];
       }
     };
 })();

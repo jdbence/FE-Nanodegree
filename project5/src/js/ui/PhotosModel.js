@@ -1,6 +1,7 @@
 function PhotosModel(items, search) {
   var ref = this;
   ref.items = items;
+  ref.isPhotoErrorVisible = ko.observable(false);
   ref.isVisible = ko.observable(false);
   ref.picked = ko.observable(items()[0]);
   ref.blank = ko.mapping.fromJS({images:[]});
@@ -45,19 +46,18 @@ function PhotosModel(items, search) {
   
   // Get Flickr images
   ref.getFlickr = function (item, name){
-    Util.getJSON('https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=' + name, function(response){
-      if(response !== null){
-        
+    Util.getJSONP('https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=' + name, 'jsonFlickrFeed').then(
+      function(response) {
+        ref.isPhotoErrorVisible(false);
         item.images(Util.map(response.items, function(item){
           return item.media.m;
         }));
-        
         ref.pckry.reloadItems();
-        
-      }else{
-    	  item.images([]);
+      }, function(error) {
+        item.images([]);
+        ref.isPhotoErrorVisible(true);
       }
-    }, 'jsonFlickrFeed');
+    );
   };
   
   // Adjust image layout
@@ -79,4 +79,9 @@ function PhotosModel(items, search) {
   ref.isPhotoViewerVisible = ko.computed(function() {
     return ref.selectedImage() !== "";
   });
+  
+  // Sets image to the larger version of the thumbnail
+  ref.viewImage = function(src) {
+    ref.selectedImage(src.slice(0, -5) + 'z' + src.slice(-4));
+  };
 }

@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div id="menu" class="mobile-vis" data-bind="css: visibleClass">
+    <div class="menu mobile-vis" data-bind="css: visibleClass">
       <div class="clickblock" data-bind="visible: isVisible, click: toggleSearchBar" ></div>
       <button class="search-btn search-icon" data-bind="click: toggleSearchBar">
         <i class="material-icons">search</i>
@@ -17,7 +17,7 @@
     </div>
     <nav>
       <div class="nav-header">
-        <div id="search">
+        <div class="search">
           <input placeholder="Search National Parks" data-bind="textInput: search"/>
           <div class="search-buttons">
             <button class="search-btn close-icon" data-bind="click: clearSearch">
@@ -25,19 +25,19 @@
             </button>
           </div>
         </div>
-        <div id="state">
+        <div class="state">
           <i class="material-icons arrow">arrow_drop_down</i>
           <select data-bind="options: options, value: filter"></select>
         </div>
       </div>
       <div class="nav-content">
-        <div id="list" data-bind="template: 'listTemplate', visible: isVisible"></div>
-        <div id="description" data-bind="template: 'descriptionTemplate', visible: isVisible"></div>
+        <div class="list" data-bind="template: 'listTemplate', visible: isVisible"></div>
+        <div class="description" data-bind="template: 'descriptionTemplate', visible: isVisible"></div>
       </div>
     </nav>
     <article>
-      <div id="map" class="hide"></div>
-      <div id="photos" data-bind="template: 'photosTemplate', visible: isVisible"></div>
+      <div class="map" class="hide"></div>
+      <div class="photos" data-bind="template: 'photosTemplate', visible: isVisible"></div>
     </article>
     <!-- build:css ./css/all.min.css lazyload-->
     <link href="../node_modules/material-design-icons/iconfont/material-icons.css" rel="stylesheet" />
@@ -48,12 +48,44 @@
     
     <script>
       // Called when GoogleMaps is loaded
-      function mapReady(){
-        window.dispatchEvent(new Event('GMapsReady'));
+      function mapReady() {
+        window.appstatus = 'GMAPS_LOAD_SUCCESS';
+        window.dispatchEvent(new Event(window.appstatus));
+      }
+      function mapFailed() {
+        window.appstatus = 'GMAPS_LOAD_FAILED';
+        window.dispatchEvent(new Event(window.appstatus));
       }
     </script>
     
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&callback=mapReady"></script>
+    <script id="descriptionTemplate" type="text/html">
+      <h3 data-bind="text: picked().label"></h3>
+      <p>Elevation: <span data-bind="text: picked().elevation"></span></p>
+      <div data-bind="html: picked().content"></div>
+    </script>
+    <script id="listTemplate" type="text/html">
+      <ul data-bind="foreach: listItems">
+        <li data-bind="click: $parent.selectItem, visible: isVisible">
+          <object class="list-icon" data-bind="attr: { data: svgPath}" type="image/svg+xml"></object>
+          <span data-bind="text: label"></span>
+        </li>
+      </ul>
+    </script>
+    <script id="photosTemplate" type="text/html">
+      <div data-bind="visible: isPhotoErrorVisible">
+        <h3>Issue loading photos from Flickr</h3>
+      </div>
+      <div class="photoblock" data-bind="visible: isPhotoViewerVisible, click: closeImage">
+        <img alt="photo" data-bind="attr: { src: selectedImage }"/>
+      </div>
+      <div data-bind="foreach: images" class="grid">
+        <img class="grid-item" alt="photo" data-bind="attr: { src: $data }, event: { load: $parent.imageLoaded }, click: $parent.viewImage"/>
+      </div>
+    </script>
+    
+    <div class="gmapScript">
+      <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&callback=mapReady" onerror="mapFailed()"></script>
+    </div>
     
     <!-- build:js ./js/all.min.js async-->
     <script src="../node_modules/knockout/build/output/knockout-latest.js"></script>
@@ -73,28 +105,9 @@
     <script src="./js/ui/DescriptionModel.js"></script>
     <script src="./js/ui/PhotosModel.js"></script>
     <script src="./js/ui/LocalStorageModel.js"></script>
+    <script src="./js/ui/NoDataMapModel.js"></script>
     <script src="./js/App.js"></script>
     <!-- endbuild -->
-    <script id="descriptionTemplate" type="text/html">
-      <h3 data-bind="text: picked().label"></h3>
-      <p>Elevation: <span data-bind="text: picked().elevation"></span></p>
-      <div data-bind="html: picked().content"></div>
-    </script>
-    <script id="listTemplate" type="text/html">
-      <ul data-bind="foreach: listItems">
-        <li data-bind="click: $parent.selectItem, visible: isVisible">
-          <i class="material-icons" data-bind="style: {color: color}">place</i>
-          <span data-bind="text: label"></span>
-        </li>
-      </ul>
-    </script>
-    <script id="photosTemplate" type="text/html">
-      <div class="photoblock" data-bind="visible: isPhotoViewerVisible, click: closeImage">
-        <img alt="photo" data-bind="attr: { src: selectedImage }"/>
-      </div>
-      <div data-bind="foreach: images" class="grid">
-        <img class="grid-item" alt="photo" data-bind="attr: { src: $data }, event: { load: $parent.imageLoaded }, click: $parent.selectedImage"/>
-      </div>
-    </script>
+    
   </body>
 </html>
