@@ -94,7 +94,7 @@ $(function() {
         });
         
         // reset feed after tests
-        afterEach(function() {
+        afterAll(function() {
             $('.header-title').html(header);
             $('.feed').empty();
         });
@@ -112,16 +112,29 @@ $(function() {
     
     describe('New Feed Selection', function() {
         var header = $('.header-title').html();
-        var feed;
+        var feed0 = null;
+        var feed1 = null;
+        var feed2 = null;
         
-        beforeEach(function(done) {
-            // Async call done after feed loaded
-            loadFeed(0, done);
-            feed = $('.feed').html();
+        beforeAll(function(done) {
+            // Async feed 0
+            loadFeed(0, function(){
+                feed0 = $('.feed').html();
+                // Async feed 1
+                loadFeed(1, function(){
+                    feed1 = $('.feed').html();
+                    // Async feed 2
+                    loadFeed(2, function(){
+                        feed2 = $('.feed').html();
+                        // Run Spec
+                        done();
+                    });
+                });
+            });
         });
         
         // reset feed after tests
-        afterEach(function() {
+        afterAll(function() {
             $('.header-title').html(header);
             $('.feed').empty();
         });
@@ -130,8 +143,16 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        it('feed changed', function() {
-            expect($('.feed').html()).not.toEqual(feed);
+        it('feed changed', function(done) {
+            // Make sure feed was set
+            expect(feed0).not.toBeNull();
+            expect(feed1).not.toBeNull();
+            expect(feed2).not.toBeNull();
+            // Make sure feed is different
+            expect(feed1).not.toEqual(feed0);
+            expect(feed2).not.toEqual(feed1);
+            // Async
+            done();
         });
     });
     
@@ -152,6 +173,7 @@ $(function() {
             var spyEvent = spyOnEvent(link, 'click');
             $(link).trigger('click');
             expect($('body')).toHaveClass('menu-hidden');
+            expect(spyEvent).toHaveBeenTriggered();
             expect(spyEvent).toHaveBeenPrevented();
         });
     });

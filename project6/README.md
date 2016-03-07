@@ -33,6 +33,18 @@ In this project, Jasmine Unit tests are used to describe and test RSS Feed Reade
 * API feed has img
 * API feed has atleast 1 new article
 
+### Simple Server
+Make index.html accessable
+
+```node
+//  Move into project folder
+cd project6/
+//  Install globals
+npm install http-server -g
+//  Start server
+http-server -p 8080
+```
+
 ### License
 
 Project is released under the [MIT License](http://opensource.org/licenses/MIT).

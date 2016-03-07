@@ -92,11 +92,17 @@ h2 {
 }
 
 .jasmine_html-reporter {
-    position: absolute;
+    position: fixed;
     width: 50%;
-    overflow: hidden;
+    overflow-y: auto;
     max-width: 50em;
     top: 0;
     bottom: 0;
     right: 0;
+    padding: 1em;
+    margin: 0;
+}
+
+.jasmine_html-reporter .result-message {
+    overflow-wrap: break-word;
 }
