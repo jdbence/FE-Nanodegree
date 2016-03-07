@@ -4,6 +4,7 @@
 [3]:https://github.com/jdbence/FE-Nanodegree/tree/master/project3
 [4]:https://github.com/jdbence/FE-Nanodegree/tree/master/project4
 [5]:https://github.com/jdbence/FE-Nanodegree/tree/master/project5
+[6]:https://github.com/jdbence/FE-Nanodegree/tree/master/project6
 
 # FE-Nanodegree
 
@@ -18,3 +19,5 @@
 ## [Project 4 : Website Optimization][4]
 
 ## [Project 5 : Neighborhood Map][5]
+
+## [Project 6 : Feed Reader Testing][6]
