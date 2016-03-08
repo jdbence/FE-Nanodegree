@@ -84,6 +84,12 @@ var MapModel = function (data, searchFilter, stateFilter) {
     }
   }
   
+  function isSmallScreen () {
+    var h = document.body.offsetHeight;
+    var w = document.body.offsetWidth;
+    return (h > w ? h : w) > 1024;
+  }
+  
   function createMap () {
     var element = el.get('map');
     var maxZoom = 10;
@@ -92,7 +98,7 @@ var MapModel = function (data, searchFilter, stateFilter) {
       maxZoom: maxZoom,
       minZoom: 3,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
-      mapTypeControl:  true,
+      mapTypeControl:  isSmallScreen(),
       streetViewControl: false,
       zoomControl: false
     });
@@ -122,15 +128,17 @@ var MapModel = function (data, searchFilter, stateFilter) {
     // Tell GMaps the page resized
     google.maps.event.trigger(map, 'resize');
     
-    // Fit the bounds around the visible markers
-    if(locMarkers.length > 0){
-      var bounds = new google.maps.LatLngBounds();
-      for(var i=0; i<locMarkers.length; i++) {
-         bounds.extend(locMarkers[i].getPosition());
+    setTimeout(function(){
+      // Fit the bounds around the visible markers
+      if(locMarkers.length > 0){
+        var bounds = new google.maps.LatLngBounds();
+        for(var i=0; i<locMarkers.length; i++) {
+           bounds.extend(locMarkers[i].getPosition());
+        }
+        map.setCenter(bounds.getCenter());
+        map.fitBounds(bounds);
+        map.setZoom(map.getZoom() - 1);
       }
-      map.setCenter(bounds.getCenter());
-      map.fitBounds(bounds);
-      map.setZoom(map.getZoom() - 1);
-    }
+    }, 0);
   }
 };
