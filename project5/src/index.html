@@ -83,10 +83,6 @@
       </div>
     </script>
     
-    <div class="gmapScript">
-      <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&callback=mapReady" onerror="mapFailed()"></script>
-    </div>
-    
     <!-- build:js ./js/all.min.js async-->
     <script src="../node_modules/knockout/build/output/knockout-latest.js"></script>
     <script src="../node_modules/knockout-mapping/dist/knockout.mapping.js"></script>
@@ -108,6 +104,10 @@
     <script src="./js/ui/NoDataMapModel.js"></script>
     <script src="./js/App.js"></script>
     <!-- endbuild -->
+    
+    <div class="gmapScript">
+      <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&callback=mapReady" onerror="mapFailed()"></script>
+    </div>
     
   </body>
 </html>

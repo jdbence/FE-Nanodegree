@@ -16,12 +16,12 @@
     ko.applyBindings(new PhotosModel(items, searchFilter), el.get('photos'));
     
     // Remove startup listeners
-    window.removeEventListener('GMAPS_LOAD_SUCCESS', ref.onSuccess);
-    window.removeEventListener('GMAPS_LOAD_FAILED', ref.onFailed);
+    window.removeEventListener('GMAPS_LOAD_SUCCESS', ref.onMapSuccess);
+    window.removeEventListener('GMAPS_LOAD_FAILED', ref.onMapFailed);
   };
   
   // GoogleMaps failed to load
-  ref.onFailed = function() {
+  ref.onMapFailed = function() {
     ref.initialize(NoDataMapModel);
   };
   
@@ -37,13 +37,13 @@
   // Issue with app
   else if (typeof appstatus !== "undefined") {
     if (appstatus === "GMAPS_LOAD_SUCCESS") {
-      ref.onSuccess();
+      ref.onMapSuccess();
     } else {
-      ref.onFailed();
+      ref.onMapFailed();
     }
   } else {
     // Listen for events from script loader
-    window.addEventListener('GMAPS_LOAD_SUCCESS', ref.onSuccess, false);
-    window.addEventListener('GMAPS_LOAD_FAILED', ref.onFailed, false);
+    window.addEventListener('GMAPS_LOAD_SUCCESS', ref.onMapSuccess, false);
+    window.addEventListener('GMAPS_LOAD_FAILED', ref.onMapFailed, false);
   }
 })();
