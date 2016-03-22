@@ -8,6 +8,8 @@
 
 # FE-Nanodegree
 
+Collection of projects developed during the Udacity Frontend Nanodegree. Each project is seperated into it's own sub-folder.
+
 ## [Project 0 : About Me][0]
 
 ## [Project 1 : Build a Portfolio Site][1]
