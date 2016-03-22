@@ -2,12 +2,15 @@
 Optimized version of wepages.
 Uses Gulp for combining and minifying html, css, js and images
 
+[example]: https://jdbence.github.io/FE-Nanodegree/project4/dist/index.html
 [get-zip]: https://github.com/jdbence/FE-Nanodegree/archive/master.zip
 [get-tgz]: https://github.com/jdbence/FE-Nanodegree/archive/master.tar.gz
 [clone-http]: https://github.com/jdbence/FE-Nanodegree.git
 [clone-svn]: https://github.com/jdbence/FE-Nanodegree
 [clone-ghwin]: github-windows://openRepo/https://github.com/jdbence/FE-Nanodegree
 [clone-ghmac]: github-mac://openRepo/https://github.com/jdbence/FE-Nanodegree
+
+[Live Example][example]
 
 ## Installation
 
