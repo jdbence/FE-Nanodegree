@@ -7,7 +7,7 @@ Player must collect level keys to advance to the next level.
 Player must complete the level within the given time.
 Player must avoid obstacles(enemies, water) or they will reset to the start position.
 
-[example]: https://jdbence.github.io/FE-Nanodegree/project3/build/index.html
+[example]: https://jdbence.github.io/FE-Nanodegree/project3/index.html
 [get-zip]: https://github.com/jdbence/FE-Nanodegree/archive/master.zip
 [get-tgz]: https://github.com/jdbence/FE-Nanodegree/archive/master.tar.gz
 [clone-http]: https://github.com/jdbence/FE-Nanodegree.git
